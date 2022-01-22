@@ -2,16 +2,21 @@ name: 'Github Pages'
 on: 
   push:
     branches:
-      -main
+      - main
   pull_request:
-
+    branches:
+      - main
+      
+env:
+  PROJECT_NAME: LudusBet.csproj
+      
 jobs:
   build:
     runs-on: ubuntu-latest
     concurrency:
       group: ${{ github.workflow }}-${{ github.ref }}
+      cancel-in-progress: true
     steps:
-        # Checkout the code
         - uses: actions/checkout@v2
 
         # Install .NET Core SDK
@@ -20,14 +25,18 @@ jobs:
           with:
             dotnet-version: 6.0.x
             include-prerelease: true
+            
+        # Build project
+        - name: Build
+        - run: dotnet build $PROJECT_NAME
 
         # Run tests
         - name: Test
-          run: dotnet test
+          run: dotnet test $PROJECT_NAME
 
         # Generate the website
         - name: Publish
-          run: dotnet publish LudusBet.csproj --configuration Release
+          run: dotnet publish $PROJECT_NAME --configuration Release --no-build
 
         # Publish the website
         - name: Deploy
