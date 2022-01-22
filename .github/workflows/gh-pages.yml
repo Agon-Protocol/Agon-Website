@@ -28,7 +28,7 @@ jobs:
             
         # Build project
         - name: Build
-        - run: dotnet build $PROJECT_NAME
+          run: dotnet build $PROJECT_NAME
 
         # Run tests
         - name: Test
