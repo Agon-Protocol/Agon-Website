@@ -1,11 +1,14 @@
 ﻿@inherits LayoutComponentBase
+@inject KeplrService keplr
 
 <MudLayout>
     <MudAppBar>
-        <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@((e) => DrawerToggle())" />
+        <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="ToggleDrawer" />
         Ludus Bet
+        <MudSpacer />
+        <Profile />
     </MudAppBar>
-    <MudDrawer @bind-Open="@_drawerOpen">
+    <MudDrawer @bind-Open="@_isDrawerOpen">
         <NavMenu />
     </MudDrawer>
     <MudMainContent>
@@ -16,10 +19,14 @@
 </MudLayout>
 
 @code {
-    bool _drawerOpen = true;
+    private bool _isDrawerOpen = true;
 
-    void DrawerToggle()
+    protected override async Task OnInitializedAsync()
     {
-        _drawerOpen = !_drawerOpen;
+        await base.OnInitializedAsync();
+
+        await keplr.ConnectKeplrAccount();
     }
+
+    private void ToggleDrawer() => _isDrawerOpen = !_isDrawerOpen;
 }

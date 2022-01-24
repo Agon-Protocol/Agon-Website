@@ -1,0 +1,25 @@
+﻿@inject KeplrService keplr
+@inject IJSRuntime js
+@inject ISnackbar snackBar
+
+@if (keplr.Account is null)
+{
+    <MudButton Class="ma-auto" Variant="Variant.Filled" StartIcon="@Icons.Material.Filled.AccountBalanceWallet" Color="Color.Secondary" OnClick="keplr.ConnectKeplrAccount">Connect Wallet</MudButton>
+}
+else
+{
+    <MudPaper Class="ma-2 pa-2 d-flex align-content-center flex-wrap">
+        <MudAvatar Color="Color.Primary" Class="my-auto mr-2" Size="Size.Small">L</MudAvatar>
+        <MudText Class="ma-auto" Typo="Typo.overline">@keplr.Account.Address</MudText>
+        <MudIconButton Class="ma-auto" Icon="@Icons.Material.Filled.CopyAll" aria-label="copy" Size="Size.Small" OnClick="CopyAddressToClipboard"></MudIconButton>
+        <MudIconButton Class="ma-auto" Icon="@Icons.Material.Filled.Logout" aria-label="logout" Size="Size.Small" OnClick="keplr.Logout"></MudIconButton>
+    </MudPaper>
+}
+
+@code {
+    private async void CopyAddressToClipboard()
+    {
+        await js.InvokeVoidAsync("navigator.clipboard.writeText", keplr.Account?.Address);
+        snackBar.Add("The address has been copied to the clipboard.", Severity.Info);
+    }
+}
