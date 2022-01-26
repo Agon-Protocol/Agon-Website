@@ -1,6 +1,5 @@
 ﻿// global dependencies
 const path = require('path');
-var nodeExternals = require('webpack-node-externals');
 
 module.exports = {
     module: {
@@ -21,10 +20,9 @@ module.exports = {
             }
         ]
     },
-    entry: './src/index.ts',
     output: {
         path: path.resolve(__dirname, '../wwwroot/js'),
-        filename: "bundle.js",
+        filename: "bundle.min.js",
     },
     resolve: {
         fallback: {
