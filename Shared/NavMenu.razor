@@ -1,11 +1,12 @@
 ﻿<MudNavMenu>
     <MudNavLink Href="/" Match="NavLinkMatch.All">Home</MudNavLink>
-    <MudNavLink Href="/about">About</MudNavLink>
-    <MudNavLink Href="/whitepaper">Whitepaper</MudNavLink>
+    <MudNavGroup Title="About" Expanded="true">
+        <MudNavLink Href="/about/whitepaper">Whitepaper</MudNavLink>
+        <MudNavLink Href="/about/faq">FAQ</MudNavLink>
+    </MudNavGroup>
     <MudNavGroup Title="Modes" Expanded="true">
         <MudNavLink Href="/wagers">Wagers</MudNavLink>
         <MudNavLink Href="/leagues">Leagues</MudNavLink>
         <MudNavLink Href="/tournaments">Tournaments</MudNavLink>
     </MudNavGroup>
-    <MudNavLink Href="https://twitter.com/LudusBet" Target="_blank">Twitter</MudNavLink>
 </MudNavMenu>
