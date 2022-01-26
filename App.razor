@@ -1,4 +1,7 @@
-﻿<Router AppAssembly="@typeof(App).Assembly">
+﻿@inject KeplrService keplr
+@inject DesmosService desmos
+
+<Router AppAssembly="@typeof(App).Assembly">
     <Found Context="routeData">
         <RouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)" />
         <FocusOnNavigate RouteData="@routeData" Selector="h1" />
@@ -12,7 +15,7 @@
 </Router>
 <MudThemeProvider DefaultScrollbar="true" Theme="LudusDarkTheme" />
 <MudDialogProvider />
-<MudSnackbarProvider Class="mud-snackbar-location-bottom-right" />
+<MudSnackbarProvider />
 
 @code {
     MudTheme LudusDarkTheme = new MudTheme()
@@ -43,4 +46,15 @@
                 TextDisabled = "rgba(255,255,255, 0.2)"
             },
         };
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        await base.OnAfterRenderAsync(firstRender);
+
+        if (firstRender)
+        {
+            //await desmos.InitializeAsync();
+            await keplr.ConnectKeplrAccount();
+        }
+    }
 }

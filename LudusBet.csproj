@@ -10,7 +10,7 @@
 	<ItemGroup>
 		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="6.0.1" />
 		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="6.0.1" PrivateAssets="all" />
-		<PackageReference Include="MudBlazor" Version="6.0.4" />
+		<PackageReference Include="MudBlazor" Version="6.0.5" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -21,7 +21,6 @@
 		<Folder Include="wwwroot\css\" />
 		<Folder Include="wwwroot\js\" />
 	</ItemGroup>
-
 	<Target Name="PreBuild" BeforeTargets="PreBuildEvent">
 		<Exec Command="npm install" WorkingDirectory="WebPackages" />
 		<Exec Command="npm run build" WorkingDirectory="WebPackages" />

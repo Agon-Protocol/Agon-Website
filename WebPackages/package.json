@@ -10,17 +10,26 @@
   "author": "ismellike",
   "license": "ISC",
   "devDependencies": {
+    "@cosmjs/cosmwasm-stargate": "^0.27.0",
+    "@desmoslabs/proto": "^1.0.0",
+    "@desmoslabs/sdk-core": "^1.0.1",
     "@keplr-wallet/types": "^0.8.8",
     "@swc/core": "^1.2.133",
     "@types/node": "^17.0.10",
+    "@types/regenerator-runtime": "^0.13.1",
+    "bufferutil": "^4.0.6",
+    "crypto-browserify": "^3.12.0",
+    "debug": "^4.3.3",
+    "grpc-web": "^1.3.0",
+    "path-browserify": "^1.0.1",
     "regenerator-runtime": "^0.13.9",
+    "stream-browserify": "^3.0.0",
     "swc-loader": "^0.1.15",
+    "tslib": "^2.3.1",
     "typescript": "^4.5.5",
+    "utf-8-validate": "^5.0.8",
     "webpack": "^5.67.0",
-    "webpack-cli": "^4.9.1"
-  },
-  "dependencies": {
-    "@cosmjs/cosmwasm-stargate": "^0.27.0",
-    "@cosmjs/stargate": "^0.27.0"
+    "webpack-cli": "^4.9.1",
+    "webpack-node-externals": "^3.0.0"
   }
 }

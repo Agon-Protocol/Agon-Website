@@ -36,7 +36,8 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 exports.__esModule = true;
-window.connectKeplrAsync = function (chainId) {
+var sdk_core_1 = require("@desmoslabs/sdk-core");
+window.connectKeplr = function (chainId) {
     return __awaiter(this, void 0, void 0, function () {
         var offlineSigner, accounts;
         return __generator(this, function (_a) {
@@ -57,5 +58,10 @@ window.connectKeplrAsync = function (chainId) {
             }
         });
     });
+};
+window.initializeDesmosQueryClient = function (url) {
+    if (window.desmosClient === undefined) {
+        window.desmosClient = sdk_core_1.DesmosClient.withoutSigner(url);
+    }
 };
 //# sourceMappingURL=index.js.map

@@ -1,5 +1,4 @@
 ﻿@inherits LayoutComponentBase
-@inject KeplrService keplr
 
 <MudLayout>
     <MudAppBar>
@@ -20,13 +19,6 @@
 
 @code {
     private bool _isDrawerOpen = true;
-
-    protected override async Task OnInitializedAsync()
-    {
-        await base.OnInitializedAsync();
-
-        await keplr.ConnectKeplrAccount();
-    }
 
     private void ToggleDrawer() => _isDrawerOpen = !_isDrawerOpen;
 }

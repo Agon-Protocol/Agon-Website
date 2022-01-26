@@ -1,15 +1,18 @@
 ﻿import {
     SigningCosmWasmClient
 } from "@cosmjs/cosmwasm-stargate";
-import { Window as KeplrWindow } from "@keplr-wallet/types";
+import { Window as KeplrWindow, ChainInfo } from "@keplr-wallet/types";
+import { DesmosClient } from "@desmoslabs/sdk-core";
 
 declare global {
     interface Window extends KeplrWindow {
-        connectKeplrAsync: (chainId: string) => Promise<string | null>,
+        connectKeplr: (chainId: string) => Promise<string | null>,
+        desmosClient: DesmosClient | undefined,
+        initializeDesmosClient: (url: string) => void,
     }
 }
 
-window.connectKeplrAsync = async function (chainId: string): Promise<string | null> {
+window.connectKeplr = async function (chainId: string): Promise<string | null> {
     if (!window.keplr) {
         return null;
     } else {
@@ -22,5 +25,12 @@ window.connectKeplrAsync = async function (chainId: string): Promise<string | nu
         const accounts = await offlineSigner.getAccounts();
 
         return accounts[0].address;
+    }
+}
+
+window.initializeDesmosClient = async function (url: string) {
+    if (window.desmosClient === undefined) {
+        window.desmosClient = DesmosClient.withoutSigner(url);
+        await window.desmosClient.connect();
     }
 }
