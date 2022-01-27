@@ -42,7 +42,7 @@ namespace LudusBet.Services
         {
             try
             {
-                string? networkAddress = await _js.InvokeAsync<string?>("connectKeplr", _config["Networks:Juno:ChainId"]);
+                string? networkAddress = await _js.InvokeAsync<string?>("ludus.connectKeplr", _config["Networks:Juno:ChainId"]);
                 if (networkAddress == null)
                 {
                     _dialogService.Show<InstallKeplrDialog>("Warning");
@@ -54,14 +54,12 @@ namespace LudusBet.Services
                         Address = networkAddress
                     };
 
-                    /*
-                    string? profileAddress = await _js.InvokeAsync<string>("connectKeplr", _config["Networks:Desmos:ChainId"]);
+                    string? profileAddress = await _js.InvokeAsync<string>("ludus.connectKeplrToDesmos", _config["Networks:Desmos:ChainId"], _config["Networks:Desmos:RPC"], _config["Networks:Desmos:Rest"]);
                     if (profileAddress != null)
                     {
                         Account.ProfileAddress = profileAddress;
                         Account.DesmosProfile = await _desmosService.GetProfile(Account.ProfileAddress);
                     }
-                    */
                 }
             }
             catch(JSException ex)

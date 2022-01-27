@@ -32,12 +32,12 @@ namespace LudusBet.Services
 
         public async Task<DesmosProfile> GetProfile(string user)
         {
-            return await _js.InvokeAsync<DesmosProfile>("desmosClient.getProfile", user);
+            return await _js.InvokeAsync<DesmosProfile>("ludus.desmosClient.getProfile", user);
         }
 
         public async Task InitializeAsync()
         {
-            await _js.InvokeVoidAsync("initializeDesmosClient", _config["Networks:Desmos:RPC"]);
+            await _js.InvokeVoidAsync("ludus.initializeDesmosClient", _config["Networks:Desmos:RPC"]);
         }
 
         #endregion Methods
