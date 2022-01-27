@@ -9,6 +9,7 @@ builder.RootComponents.Add<App>("#app");
 builder.RootComponents.Add<HeadOutlet>("head::after");
 
 builder.Services.AddScoped(x => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
+builder.Services.AddTransient<ErrorService>();
 builder.Services.AddTransient<DesmosService>();
 builder.Services.AddTransient<KeplrService>();
 builder.Services.AddMudServices(x =>

@@ -1,0 +1,14 @@
+﻿<MudDialog>
+    <DialogContent>
+        Install Keplr to unlock the website's full functionality.
+    </DialogContent>
+    <DialogActions>
+        <MudButton StartIcon="@Icons.Material.Filled.Download" Color="Color.Secondary" Variant="Variant.Filled" Link="https://www.keplr.app/" Target="_blank">Install</MudButton>
+        <MudButton Color="Color.Primary" OnClick="() => MudDialog?.Close(DialogResult.Ok(true))">Ok</MudButton>
+    </DialogActions>
+</MudDialog>
+
+@code {
+    [CascadingParameter] 
+    MudDialogInstance? MudDialog { get; set; }
+}
