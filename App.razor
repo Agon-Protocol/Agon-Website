@@ -53,8 +53,9 @@
 
         if (firstRender)
         {
-            await desmos.InitializeAsync();
             await keplr.ConnectKeplrAccount();
+            if (keplr?.Account?.Address != null)
+                await desmos.GetProfileByAddress(keplr.Account.Address);
         }
     }
 }

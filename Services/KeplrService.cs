@@ -10,7 +10,6 @@ namespace LudusBet.Services
         #region Fields
 
         private readonly IConfiguration _config;
-        private readonly DesmosService _desmosService;
         private readonly ErrorService _errorService;
         private readonly IDialogService _dialogService;
         private readonly IJSRuntime _js;
@@ -19,11 +18,10 @@ namespace LudusBet.Services
 
         #region Constructors
 
-        public KeplrService(IJSRuntime js, IConfiguration config, IDialogService dialogService, ErrorService errorService, DesmosService desmosService)
+        public KeplrService(IJSRuntime js, IConfiguration config, IDialogService dialogService, ErrorService errorService)
         {
             _js = js;
             _config = config;
-            _desmosService = desmosService;
             _errorService = errorService;
             _dialogService = dialogService;
         }
@@ -53,13 +51,6 @@ namespace LudusBet.Services
                     {
                         Address = networkAddress
                     };
-
-                    string? profileAddress = await _js.InvokeAsync<string>("ludus.connectKeplrToDesmos", _config["Networks:Desmos:ChainId"], _config["Networks:Desmos:RPC"], _config["Networks:Desmos:Rest"]);
-                    if (profileAddress != null)
-                    {
-                        Account.ProfileAddress = profileAddress;
-                        Account.DesmosProfile = await _desmosService.GetProfile(Account.ProfileAddress);
-                    }
                 }
             }
             catch(JSException ex)

@@ -1,0 +1,5 @@
+﻿query GetDesmosProfileByAddress ($address: String!) {
+  profile_by_pk(address: $address) {
+    address
+  }
+}

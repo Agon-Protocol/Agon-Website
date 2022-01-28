@@ -1,5 +1,5 @@
-﻿using LudusBet.Models;
-using Microsoft.JSInterop;
+﻿using LudusBet.GraphQL;
+using LudusBet.Models;
 
 namespace LudusBet.Services
 {
@@ -7,17 +7,15 @@ namespace LudusBet.Services
     {
         #region Fields
 
-        private readonly IConfiguration _config;
-        private readonly IJSRuntime _js;
+        private readonly DesmosClient _desmosClient;
 
         #endregion Fields
 
         #region Constructors
 
-        public DesmosService(IJSRuntime js, IConfiguration config)
+        public DesmosService(DesmosClient desmosClient)
         {
-            _js = js;
-            _config = config;
+            _desmosClient = desmosClient;
         }
 
         #endregion Constructors
@@ -30,14 +28,16 @@ namespace LudusBet.Services
 
         #region Methods
 
-        public async Task<DesmosProfile> GetProfile(string user)
+        public async Task<DesmosProfile> GetProfileByAddress(string address)
         {
-            return await _js.InvokeAsync<DesmosProfile>("ludus.desmosClient.getProfile", user);
-        }
+            if (DesmosProfile == null)
+            {
+                var result = await _desmosClient.GetDesmosProfileByAddress.ExecuteAsync(address);
 
-        public async Task InitializeAsync()
-        {
-            await _js.InvokeVoidAsync("ludus.initializeDesmosClient", _config["Networks:Desmos:RPC"]);
+                DesmosProfile = new DesmosProfile { Address = result.Data?.Profile_by_pk?.Address };
+            }
+
+            return DesmosProfile;
         }
 
         #endregion Methods

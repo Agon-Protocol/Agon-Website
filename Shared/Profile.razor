@@ -1,4 +1,5 @@
 ﻿@inject KeplrService keplr
+@inject DesmosService desmos
 @inject IJSRuntime js
 @inject ISnackbar snackBar
 
@@ -11,13 +12,13 @@ else
     <MudPaper Class="ma-2 pa-2 d-flex align-content-center flex-wrap">
         <MudAvatar Color="Color.Primary" Class="my-auto mr-2" Size="Size.Small">L</MudAvatar>
         <MudText Class="ma-auto" Typo="Typo.overline">
-            @if(keplr.Account.DesmosProfile is null)
+            @if(desmos.DesmosProfile is null)
             {
                 @keplr.Account.Address
             }
             else
             {
-                @keplr.Account.DesmosProfile.DTag
+                @desmos.DesmosProfile.Address
             }
         </MudText>
         <MudIconButton Class="ma-auto" Icon="@Icons.Material.Filled.CopyAll" aria-label="copy" Size="Size.Small" OnClick="CopyAddressToClipboard"></MudIconButton>
@@ -28,7 +29,7 @@ else
 @code {
     private async void CopyAddressToClipboard()
     {
-        await js.InvokeVoidAsync("navigator.clipboard.writeText", keplr.Account?.DesmosProfile?.DTag ?? keplr.Account?.Address);
+        await js.InvokeVoidAsync("navigator.clipboard.writeText", keplr.Account?.Address);
         snackBar.Add("The address has been copied to the clipboard.", Severity.Info);
     }
 }
