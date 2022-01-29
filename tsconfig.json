@@ -2,6 +2,7 @@
   "compilerOptions": {
     "moduleResolution": "Node",
     "module": "CommonJS",
+    "lib": [ "ES2015", "DOM" ],
     "noImplicitAny": true,
     "removeComments": true,
     "preserveConstEnums": true,

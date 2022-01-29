@@ -5,7 +5,8 @@
   "private": true,
   "scripts": {
     "sass": "sass --no-source-map --style=compressed src/style.scss ../wwwroot/css/style.min.css",
-    "build": "npm run sass && webpack --mode production"
+    "pack": "webpack --mode production",
+    "build": "yarn run sass && yarn run pack"
   },
   "keywords": [],
   "author": "ismellike",
