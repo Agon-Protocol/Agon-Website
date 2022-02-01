@@ -1,3 +1,4 @@
+using Blazored.LocalStorage;
 using LudusBet;
 using LudusBet.Services;
 using Microsoft.AspNetCore.Components.Web;
@@ -8,10 +9,11 @@ var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");
 builder.RootComponents.Add<HeadOutlet>("head::after");
 
+builder.Services.AddBlazoredLocalStorage();
 builder.Services.AddScoped(x => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
-builder.Services.AddTransient<ErrorService>();
-builder.Services.AddTransient<DesmosService>();
-builder.Services.AddTransient<KeplrService>();
+builder.Services.AddScoped<ErrorService>();
+builder.Services.AddScoped<DesmosService>();
+builder.Services.AddScoped<KeplrService>();
 builder.Services.AddDesmosClient().ConfigureHttpClient(x => x.BaseAddress = new Uri("https://gql.mainnet.desmos.network/v1/graphql"));
 
 builder.Services.AddMudServices(x =>

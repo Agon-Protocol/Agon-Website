@@ -1,14 +1,18 @@
 ﻿import {
     SigningCosmWasmClient
 } from "@cosmjs/cosmwasm-stargate";
-import { Window as KeplrWindow } from "@keplr-wallet/types";
+import { Window as KeplrWindow, Key } from "@keplr-wallet/types";
 
 declare global {
     interface Window extends KeplrWindow { }
 }
 
-export async function connectKeplr(chainId: string): Promise<string | null> {
-    if (!window.getOfflineSigner || !window.keplr) {
+window.addEventListener("keplr_keystorechange", () => {
+    console.log("Key store in Keplr is changed. You may need to refetch the account info.")
+})
+
+export async function connectKeplr(chainId: string): Promise<Key | null> {
+    if (!window.keplr) {
         return null;
     } else {
         // Enabling before using the Keplr is recommended.
@@ -16,14 +20,13 @@ export async function connectKeplr(chainId: string): Promise<string | null> {
         // Also, it will request that the user unlock the wallet if the wallet is locked.
         await window.keplr.enable(chainId);
 
-        const offlineSigner = await window.keplr.getOfflineSigner(chainId);
-        const accounts = await offlineSigner.getAccounts();
+        var key = await window.keplr.getKey(chainId);
 
-        return accounts[0].address;
+        return key;
     }
 }
 
-export async function connectKeplrToDesmos(chainId: string, rpc: string, rest: string): Promise<string | null> {
+export async function connectKeplrToDesmos(chainId: string, rpc: string, rest: string): Promise<Key | null> {
     if (!window.keplr.experimentalSuggestChain) {
         return null;
     }

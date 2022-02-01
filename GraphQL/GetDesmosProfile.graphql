@@ -1,5 +1,8 @@
-﻿query GetDesmosProfileByAddress ($address: String!) {
-  profile_by_pk(address: $address) {
-    address
+﻿query GetDesmosProfileByChainLink ($address: String!) {
+  chain_link(where: {external_address: {_eq: $address}}) {
+    profile {
+      dtag
+      profile_pic
+    }
   }
 }

@@ -9,20 +9,49 @@
 }
 else
 {
-    <MudPaper Class="ma-2 pa-2 d-flex align-content-center flex-wrap">
-        <MudAvatar Color="Color.Primary" Class="my-auto mr-2" Size="Size.Small">L</MudAvatar>
-        <MudText Class="ma-auto" Typo="Typo.overline">
-            @if(desmos.DesmosProfile is null)
-            {
+    <MudPaper Class="ma-2 pa-2 d-flex align-center">
+        @if (desmos.DesmosProfile is null)
+        {
+            <MudText Typo="Typo.subtitle2">
                 @keplr.Account.Address
+            </MudText>
+        }
+        else
+        {
+            <MudAvatar Class="mr-2" Size="Size.Medium" Image="@desmos.DesmosProfile.ProfilePicture" />
+            <MudText Typo="Typo.subtitle2">
+                @desmos.DesmosProfile.DTag
+            </MudText>
+        }
+
+        <MudMenu Icon="@Icons.Material.Filled.Menu" AnchorOrigin="Origin.BottomLeft" TransformOrigin="Origin.TopCenter">
+            @if (desmos.DesmosProfile is null)
+            {
+                <MudMenuItem Link="https://medium.com/desmosnetwork/the-desmos-profile-48622bb43426" Target="_blank">
+                    <MudText Class="d-flex align-center">
+                        <MudIcon Class="mr-2" Icon="@Icons.Material.Filled.AccountCircle" aria-label="profile" Size="Size.Small" /> Create a Desmos Profile
+                    </MudText>
+                </MudMenuItem>
             }
             else
             {
-                @desmos.DesmosProfile.Address
+                <MudMenuItem Link="@desmos.DesmosProfile.ProfileLink" Target="_blank">
+                    <MudText Class="d-flex align-center">
+                        <MudIcon Class="mr-2" Icon="@Icons.Material.Filled.AccountCircle" aria-label="profile" Size="Size.Small" /> Profile
+                    </MudText>
+                </MudMenuItem>
             }
-        </MudText>
-        <MudIconButton Class="ma-auto" Icon="@Icons.Material.Filled.CopyAll" aria-label="copy" Size="Size.Small" OnClick="CopyAddressToClipboard"></MudIconButton>
-        <MudIconButton Class="ma-auto" Icon="@Icons.Material.Filled.Logout" aria-label="logout" Size="Size.Small" OnClick="keplr.Logout"></MudIconButton>
+            <MudMenuItem OnClick="CopyAddressToClipboard">
+                <MudText Class="d-flex align-center">
+                    <MudIcon Class="mr-2" Icon="@Icons.Material.Filled.CopyAll" aria-label="copy" Size="Size.Small" /> Copy Address
+                </MudText>
+            </MudMenuItem>
+            <MudMenuItem OnClick="keplr.Logout">
+                <MudText Class="d-flex align-center">
+                    <MudIcon Class="mr-2" Icon="@Icons.Material.Filled.Logout" aria-label="log out" Size="Size.Small" /> Log Out
+                </MudText>
+            </MudMenuItem>
+        </MudMenu>
     </MudPaper>
 }
 

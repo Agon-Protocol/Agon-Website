@@ -1,43 +1,90 @@
-﻿using LudusBet.GraphQL;
+﻿using Blazored.LocalStorage;
+using LudusBet.GraphQL;
 using LudusBet.Models;
 
 namespace LudusBet.Services
 {
-    public class DesmosService
+    public class DesmosService : StateContainer
     {
         #region Fields
 
         private readonly DesmosClient _desmosClient;
+        private readonly ErrorService _errorService;
+        private readonly ILocalStorageService _localStorageService;
 
         #endregion Fields
 
         #region Constructors
 
-        public DesmosService(DesmosClient desmosClient)
+        public DesmosService(DesmosClient desmosClient, ErrorService errorService, ILocalStorageService localStorageService)
         {
             _desmosClient = desmosClient;
+            _errorService = errorService;
+            _localStorageService = localStorageService;
         }
 
         #endregion Constructors
 
         #region Properties
 
-        public DesmosProfile? DesmosProfile { get; set; }
+        private DesmosProfile? _desmosProfile;
+        public DesmosProfile? DesmosProfile
+        {
+            get => _desmosProfile;
+            set
+            {
+                _desmosProfile = value;
+                NotifyStateChanged();
+            }
+        }
 
         #endregion Properties
 
         #region Methods
 
-        public async Task<DesmosProfile> GetProfileByAddress(string address)
+        public async Task ConnectDesmosProfileByExternalAddress(string address)
         {
-            if (DesmosProfile == null)
-            {
-                var result = await _desmosClient.GetDesmosProfileByAddress.ExecuteAsync(address);
+            //already connected
+            if (DesmosProfile != null)
+                return;
 
-                DesmosProfile = new DesmosProfile { Address = result.Data?.Profile_by_pk?.Address };
+            //check local storage first
+            DesmosProfile desmosProfile = await _localStorageService.GetItemAsync<DesmosProfile>(address);
+
+            if (desmosProfile != null)
+            {
+                DesmosProfile = desmosProfile;
+                return;
             }
 
-            return DesmosProfile;
+            //query desmos
+            var profileQueryResult = await GetDesmosProfileByExternalAddress(address);
+
+            if (profileQueryResult != null)
+            {
+                DesmosProfile = new DesmosProfile(profileQueryResult);
+                await _localStorageService.SetItemAsync(address, DesmosProfile);
+            }
+        }
+
+        public async Task<IGetDesmosProfileByChainLink_Chain_link_Profile?> GetDesmosProfileByExternalAddress(string address)
+        {
+            try
+            {
+                var result = await _desmosClient.GetDesmosProfileByChainLink.ExecuteAsync(address);
+
+
+                if (result.Data is null || result.Data.Chain_link is null || result.Data.Chain_link.Count == 0)
+                    return null;
+
+                return result.Data.Chain_link[0].Profile;
+            }
+            catch (Exception ex)
+            {
+                _errorService.ProcessError(ex);
+            }
+
+            return null;
         }
 
         #endregion Methods

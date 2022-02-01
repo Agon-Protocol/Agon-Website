@@ -5,7 +5,7 @@ using MudBlazor;
 
 namespace LudusBet.Services
 {
-    public class KeplrService
+    public class KeplrService : StateContainer
     {
         #region Fields
 
@@ -13,24 +13,35 @@ namespace LudusBet.Services
         private readonly ErrorService _errorService;
         private readonly IDialogService _dialogService;
         private readonly IJSRuntime _js;
+        private readonly DesmosService _desmosService;
 
         #endregion Fields
 
         #region Constructors
 
-        public KeplrService(IJSRuntime js, IConfiguration config, IDialogService dialogService, ErrorService errorService)
+        public KeplrService(IJSRuntime js, IConfiguration config, IDialogService dialogService, DesmosService desmosService, ErrorService errorService)
         {
             _js = js;
             _config = config;
             _errorService = errorService;
             _dialogService = dialogService;
+            _desmosService = desmosService;
         }
 
         #endregion Constructors
 
         #region Properties
 
-        public KeplrAccount? Account { get; set; }
+        private KeplrAccount? _account;
+
+        public KeplrAccount? Account
+        {
+            get => _account; set
+            {
+                _account = value;
+                NotifyStateChanged();
+            }
+        }
 
         #endregion Properties
 
@@ -40,8 +51,8 @@ namespace LudusBet.Services
         {
             try
             {
-                string? networkAddress = await _js.InvokeAsync<string?>("ludus.connectKeplr", _config["Networks:Juno:ChainId"]);
-                if (networkAddress == null)
+                KeplrKey? keplrKey = await _js.InvokeAsync<KeplrKey?>("ludus.connectKeplr", _config["Networks:Juno:ChainId"]);
+                if (keplrKey == null)
                 {
                     _dialogService.Show<InstallKeplrDialog>("Warning");
                 }
@@ -49,17 +60,21 @@ namespace LudusBet.Services
                 {
                     Account = new KeplrAccount
                     {
-                        Address = networkAddress
+                        Address = keplrKey.Bech32Address,
+                        Name = keplrKey.Name,
                     };
+
+                    if (keplrKey.Bech32Address != null)
+                        await _desmosService.ConnectDesmosProfileByExternalAddress(keplrKey.Bech32Address);
                 }
             }
-            catch(JSException ex)
+            catch (JSException ex)
             {
-                if(ex.Message.StartsWith("Request rejected"))
+                if (ex.Message.StartsWith("Request rejected"))
                     return;
                 _errorService.ProcessError(ex);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 _errorService.ProcessError(ex);
             }

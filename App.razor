@@ -1,5 +1,6 @@
 ﻿@inject KeplrService keplr
 @inject DesmosService desmos
+@implements IDisposable
 
 <Router AppAssembly="@typeof(App).Assembly">
     <Found Context="routeData">
@@ -47,6 +48,14 @@
             },
         };
 
+    protected override async Task OnInitializedAsync()
+    {
+        await base.OnInitializedAsync();
+
+        desmos.OnChange += StateHasChanged;
+        keplr.OnChange += StateHasChanged;
+    }
+
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         await base.OnAfterRenderAsync(firstRender);
@@ -54,8 +63,12 @@
         if (firstRender)
         {
             await keplr.ConnectKeplrAccount();
-            if (keplr?.Account?.Address != null)
-                await desmos.GetProfileByAddress(keplr.Account.Address);
         }
     }
-}
+
+    public void Dispose()
+    {
+        desmos.OnChange -= StateHasChanged;
+        keplr.OnChange -= StateHasChanged;
+    }
+ }

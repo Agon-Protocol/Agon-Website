@@ -4,19 +4,19 @@
 namespace LudusBet.GraphQL
 {
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.6.0.0")]
-    public partial class GetDesmosProfileByAddressResult : global::System.IEquatable<GetDesmosProfileByAddressResult>, IGetDesmosProfileByAddressResult
+    public partial class GetDesmosProfileByChainLinkResult : global::System.IEquatable<GetDesmosProfileByChainLinkResult>, IGetDesmosProfileByChainLinkResult
     {
-        public GetDesmosProfileByAddressResult(global::LudusBet.GraphQL.IGetDesmosProfileByAddress_Profile_by_pk? profile_By_Pk)
+        public GetDesmosProfileByChainLinkResult(global::System.Collections.Generic.IReadOnlyList<global::LudusBet.GraphQL.IGetDesmosProfileByChainLink_Chain_link> chain_Link)
         {
-            Profile_by_pk = profile_By_Pk;
+            Chain_link = chain_Link;
         }
 
         /// <summary>
-        /// fetch data from the table: "profile" using primary key columns
+        /// fetch data from the table: "chain_link"
         /// </summary>
-        public global::LudusBet.GraphQL.IGetDesmosProfileByAddress_Profile_by_pk? Profile_by_pk { get; }
+        public global::System.Collections.Generic.IReadOnlyList<global::LudusBet.GraphQL.IGetDesmosProfileByChainLink_Chain_link> Chain_link { get; }
 
-        public virtual global::System.Boolean Equals(GetDesmosProfileByAddressResult? other)
+        public virtual global::System.Boolean Equals(GetDesmosProfileByChainLinkResult? other)
         {
             if (ReferenceEquals(null, other))
             {
@@ -33,7 +33,7 @@ namespace LudusBet.GraphQL
                 return false;
             }
 
-            return (((Profile_by_pk is null && other.Profile_by_pk is null) || Profile_by_pk != null && Profile_by_pk.Equals(other.Profile_by_pk)));
+            return (global::StrawberryShake.Helper.ComparisonHelper.SequenceEqual(Chain_link, other.Chain_link));
         }
 
         public override global::System.Boolean Equals(global::System.Object? obj)
@@ -53,7 +53,7 @@ namespace LudusBet.GraphQL
                 return false;
             }
 
-            return Equals((GetDesmosProfileByAddressResult)obj);
+            return Equals((GetDesmosProfileByChainLinkResult)obj);
         }
 
         public override global::System.Int32 GetHashCode()
@@ -61,9 +61,9 @@ namespace LudusBet.GraphQL
             unchecked
             {
                 int hash = 5;
-                if (Profile_by_pk != null)
+                foreach (var Chain_link_elm in Chain_link)
                 {
-                    hash ^= 397 * Profile_by_pk.GetHashCode();
+                    hash ^= 397 * Chain_link_elm.GetHashCode();
                 }
 
                 return hash;
@@ -72,19 +72,22 @@ namespace LudusBet.GraphQL
     }
 
     /// <summary>
-    /// columns and relationships of "profile"
+    /// columns and relationships of "chain_link"
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.6.0.0")]
-    public partial class GetDesmosProfileByAddress_Profile_by_pk_profile : global::System.IEquatable<GetDesmosProfileByAddress_Profile_by_pk_profile>, IGetDesmosProfileByAddress_Profile_by_pk_profile
+    public partial class GetDesmosProfileByChainLink_Chain_link_chain_link : global::System.IEquatable<GetDesmosProfileByChainLink_Chain_link_chain_link>, IGetDesmosProfileByChainLink_Chain_link_chain_link
     {
-        public GetDesmosProfileByAddress_Profile_by_pk_profile(global::System.String address)
+        public GetDesmosProfileByChainLink_Chain_link_chain_link(global::LudusBet.GraphQL.IGetDesmosProfileByChainLink_Chain_link_Profile profile)
         {
-            Address = address;
+            Profile = profile;
         }
 
-        public global::System.String Address { get; }
+        /// <summary>
+        /// An object relationship
+        /// </summary>
+        public global::LudusBet.GraphQL.IGetDesmosProfileByChainLink_Chain_link_Profile Profile { get; }
 
-        public virtual global::System.Boolean Equals(GetDesmosProfileByAddress_Profile_by_pk_profile? other)
+        public virtual global::System.Boolean Equals(GetDesmosProfileByChainLink_Chain_link_chain_link? other)
         {
             if (ReferenceEquals(null, other))
             {
@@ -101,7 +104,7 @@ namespace LudusBet.GraphQL
                 return false;
             }
 
-            return (Address.Equals(other.Address));
+            return (Profile.Equals(other.Profile));
         }
 
         public override global::System.Boolean Equals(global::System.Object? obj)
@@ -121,7 +124,7 @@ namespace LudusBet.GraphQL
                 return false;
             }
 
-            return Equals((GetDesmosProfileByAddress_Profile_by_pk_profile)obj);
+            return Equals((GetDesmosProfileByChainLink_Chain_link_chain_link)obj);
         }
 
         public override global::System.Int32 GetHashCode()
@@ -129,60 +132,157 @@ namespace LudusBet.GraphQL
             unchecked
             {
                 int hash = 5;
-                hash ^= 397 * Address.GetHashCode();
+                hash ^= 397 * Profile.GetHashCode();
+                return hash;
+            }
+        }
+    }
+
+    /// <summary>
+    /// columns and relationships of "profile"
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.6.0.0")]
+    public partial class GetDesmosProfileByChainLink_Chain_link_Profile_profile : global::System.IEquatable<GetDesmosProfileByChainLink_Chain_link_Profile_profile>, IGetDesmosProfileByChainLink_Chain_link_Profile_profile
+    {
+        public GetDesmosProfileByChainLink_Chain_link_Profile_profile(global::System.String dtag, global::System.String profile_Pic)
+        {
+            Dtag = dtag;
+            Profile_pic = profile_Pic;
+        }
+
+        public global::System.String Dtag { get; }
+
+        public global::System.String Profile_pic { get; }
+
+        public virtual global::System.Boolean Equals(GetDesmosProfileByChainLink_Chain_link_Profile_profile? other)
+        {
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            if (other.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return (Dtag.Equals(other.Dtag)) && Profile_pic.Equals(other.Profile_pic);
+        }
+
+        public override global::System.Boolean Equals(global::System.Object? obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj.GetType() != GetType())
+            {
+                return false;
+            }
+
+            return Equals((GetDesmosProfileByChainLink_Chain_link_Profile_profile)obj);
+        }
+
+        public override global::System.Int32 GetHashCode()
+        {
+            unchecked
+            {
+                int hash = 5;
+                hash ^= 397 * Dtag.GetHashCode();
+                hash ^= 397 * Profile_pic.GetHashCode();
                 return hash;
             }
         }
     }
 
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.6.0.0")]
-    public partial interface IGetDesmosProfileByAddressResult
+    public partial interface IGetDesmosProfileByChainLinkResult
     {
         /// <summary>
-        /// fetch data from the table: "profile" using primary key columns
+        /// fetch data from the table: "chain_link"
         /// </summary>
-        public global::LudusBet.GraphQL.IGetDesmosProfileByAddress_Profile_by_pk? Profile_by_pk { get; }
+        public global::System.Collections.Generic.IReadOnlyList<global::LudusBet.GraphQL.IGetDesmosProfileByChainLink_Chain_link> Chain_link { get; }
+    }
+
+    /// <summary>
+    /// columns and relationships of "chain_link"
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.6.0.0")]
+    public partial interface IGetDesmosProfileByChainLink_Chain_link
+    {
+        /// <summary>
+        /// An object relationship
+        /// </summary>
+        public global::LudusBet.GraphQL.IGetDesmosProfileByChainLink_Chain_link_Profile Profile { get; }
+    }
+
+    /// <summary>
+    /// columns and relationships of "chain_link"
+    /// </summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.6.0.0")]
+    public partial interface IGetDesmosProfileByChainLink_Chain_link_chain_link : IGetDesmosProfileByChainLink_Chain_link
+    {
     }
 
     /// <summary>
     /// columns and relationships of "profile"
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.6.0.0")]
-    public partial interface IGetDesmosProfileByAddress_Profile_by_pk
+    public partial interface IGetDesmosProfileByChainLink_Chain_link_Profile
     {
-        public global::System.String Address { get; }
+        public global::System.String Dtag { get; }
+
+        public global::System.String Profile_pic { get; }
     }
 
     /// <summary>
     /// columns and relationships of "profile"
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.6.0.0")]
-    public partial interface IGetDesmosProfileByAddress_Profile_by_pk_profile : IGetDesmosProfileByAddress_Profile_by_pk
+    public partial interface IGetDesmosProfileByChainLink_Chain_link_Profile_profile : IGetDesmosProfileByChainLink_Chain_link_Profile
     {
     }
 
     /// <summary>
-    /// Represents the operation service of the GetDesmosProfileByAddress GraphQL operation
+    /// Represents the operation service of the GetDesmosProfileByChainLink GraphQL operation
     /// <code>
-    /// query GetDesmosProfileByAddress($address: String!) {
-    ///   profile_by_pk(address: $address) {
+    /// query GetDesmosProfileByChainLink($address: String!) {
+    ///   chain_link(where: { external_address: { _eq: $address } }) {
     ///     __typename
-    ///     address
+    ///     profile {
+    ///       __typename
+    ///       dtag
+    ///       profile_pic
+    ///     }
+    ///     ... on chain_link {
+    ///       id
+    ///     }
     ///   }
     /// }
     /// </code>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.6.0.0")]
-    public partial class GetDesmosProfileByAddressQueryDocument : global::StrawberryShake.IDocument
+    public partial class GetDesmosProfileByChainLinkQueryDocument : global::StrawberryShake.IDocument
     {
-        private GetDesmosProfileByAddressQueryDocument()
+        private GetDesmosProfileByChainLinkQueryDocument()
         {
         }
 
-        public static GetDesmosProfileByAddressQueryDocument Instance { get; } = new GetDesmosProfileByAddressQueryDocument();
+        public static GetDesmosProfileByChainLinkQueryDocument Instance { get; } = new GetDesmosProfileByChainLinkQueryDocument();
         public global::StrawberryShake.OperationKind Kind => global::StrawberryShake.OperationKind.Query;
-        public global::System.ReadOnlySpan<global::System.Byte> Body => new global::System.Byte[]{0x71, 0x75, 0x65, 0x72, 0x79, 0x20, 0x47, 0x65, 0x74, 0x44, 0x65, 0x73, 0x6d, 0x6f, 0x73, 0x50, 0x72, 0x6f, 0x66, 0x69, 0x6c, 0x65, 0x42, 0x79, 0x41, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x28, 0x24, 0x61, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x3a, 0x20, 0x53, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x21, 0x29, 0x20, 0x7b, 0x20, 0x70, 0x72, 0x6f, 0x66, 0x69, 0x6c, 0x65, 0x5f, 0x62, 0x79, 0x5f, 0x70, 0x6b, 0x28, 0x61, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x3a, 0x20, 0x24, 0x61, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x29, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x61, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x20, 0x7d, 0x20, 0x7d};
-        public global::StrawberryShake.DocumentHash Hash { get; } = new global::StrawberryShake.DocumentHash("md5Hash", "21934d1d4ce83f10739231e402963eab");
+        public global::System.ReadOnlySpan<global::System.Byte> Body => new global::System.Byte[]{0x71, 0x75, 0x65, 0x72, 0x79, 0x20, 0x47, 0x65, 0x74, 0x44, 0x65, 0x73, 0x6d, 0x6f, 0x73, 0x50, 0x72, 0x6f, 0x66, 0x69, 0x6c, 0x65, 0x42, 0x79, 0x43, 0x68, 0x61, 0x69, 0x6e, 0x4c, 0x69, 0x6e, 0x6b, 0x28, 0x24, 0x61, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x3a, 0x20, 0x53, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x21, 0x29, 0x20, 0x7b, 0x20, 0x63, 0x68, 0x61, 0x69, 0x6e, 0x5f, 0x6c, 0x69, 0x6e, 0x6b, 0x28, 0x77, 0x68, 0x65, 0x72, 0x65, 0x3a, 0x20, 0x7b, 0x20, 0x65, 0x78, 0x74, 0x65, 0x72, 0x6e, 0x61, 0x6c, 0x5f, 0x61, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x3a, 0x20, 0x7b, 0x20, 0x5f, 0x65, 0x71, 0x3a, 0x20, 0x24, 0x61, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x20, 0x7d, 0x20, 0x7d, 0x29, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x70, 0x72, 0x6f, 0x66, 0x69, 0x6c, 0x65, 0x20, 0x7b, 0x20, 0x5f, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x6e, 0x61, 0x6d, 0x65, 0x20, 0x64, 0x74, 0x61, 0x67, 0x20, 0x70, 0x72, 0x6f, 0x66, 0x69, 0x6c, 0x65, 0x5f, 0x70, 0x69, 0x63, 0x20, 0x7d, 0x20, 0x2e, 0x2e, 0x2e, 0x20, 0x6f, 0x6e, 0x20, 0x63, 0x68, 0x61, 0x69, 0x6e, 0x5f, 0x6c, 0x69, 0x6e, 0x6b, 0x20, 0x7b, 0x20, 0x69, 0x64, 0x20, 0x7d, 0x20, 0x7d, 0x20, 0x7d};
+        public global::StrawberryShake.DocumentHash Hash { get; } = new global::StrawberryShake.DocumentHash("md5Hash", "3581f4960b2e03f0a7e7aecc3d531558");
         public override global::System.String ToString()
         {
 #if NETSTANDARD2_0
@@ -194,35 +294,42 @@ namespace LudusBet.GraphQL
     }
 
     /// <summary>
-    /// Represents the operation service of the GetDesmosProfileByAddress GraphQL operation
+    /// Represents the operation service of the GetDesmosProfileByChainLink GraphQL operation
     /// <code>
-    /// query GetDesmosProfileByAddress($address: String!) {
-    ///   profile_by_pk(address: $address) {
+    /// query GetDesmosProfileByChainLink($address: String!) {
+    ///   chain_link(where: { external_address: { _eq: $address } }) {
     ///     __typename
-    ///     address
+    ///     profile {
+    ///       __typename
+    ///       dtag
+    ///       profile_pic
+    ///     }
+    ///     ... on chain_link {
+    ///       id
+    ///     }
     ///   }
     /// }
     /// </code>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.6.0.0")]
-    public partial class GetDesmosProfileByAddressQuery : global::LudusBet.GraphQL.IGetDesmosProfileByAddressQuery
+    public partial class GetDesmosProfileByChainLinkQuery : global::LudusBet.GraphQL.IGetDesmosProfileByChainLinkQuery
     {
-        private readonly global::StrawberryShake.IOperationExecutor<IGetDesmosProfileByAddressResult> _operationExecutor;
+        private readonly global::StrawberryShake.IOperationExecutor<IGetDesmosProfileByChainLinkResult> _operationExecutor;
         private readonly global::StrawberryShake.Serialization.IInputValueFormatter _stringFormatter;
-        public GetDesmosProfileByAddressQuery(global::StrawberryShake.IOperationExecutor<IGetDesmosProfileByAddressResult> operationExecutor, global::StrawberryShake.Serialization.ISerializerResolver serializerResolver)
+        public GetDesmosProfileByChainLinkQuery(global::StrawberryShake.IOperationExecutor<IGetDesmosProfileByChainLinkResult> operationExecutor, global::StrawberryShake.Serialization.ISerializerResolver serializerResolver)
         {
             _operationExecutor = operationExecutor ?? throw new global::System.ArgumentNullException(nameof(operationExecutor));
             _stringFormatter = serializerResolver.GetInputValueFormatter("String");
         }
 
-        global::System.Type global::StrawberryShake.IOperationRequestFactory.ResultType => typeof(IGetDesmosProfileByAddressResult);
-        public async global::System.Threading.Tasks.Task<global::StrawberryShake.IOperationResult<IGetDesmosProfileByAddressResult>> ExecuteAsync(global::System.String address, global::System.Threading.CancellationToken cancellationToken = default)
+        global::System.Type global::StrawberryShake.IOperationRequestFactory.ResultType => typeof(IGetDesmosProfileByChainLinkResult);
+        public async global::System.Threading.Tasks.Task<global::StrawberryShake.IOperationResult<IGetDesmosProfileByChainLinkResult>> ExecuteAsync(global::System.String address, global::System.Threading.CancellationToken cancellationToken = default)
         {
             var request = CreateRequest(address);
             return await _operationExecutor.ExecuteAsync(request, cancellationToken).ConfigureAwait(false);
         }
 
-        public global::System.IObservable<global::StrawberryShake.IOperationResult<IGetDesmosProfileByAddressResult>> Watch(global::System.String address, global::StrawberryShake.ExecutionStrategy? strategy = null)
+        public global::System.IObservable<global::StrawberryShake.IOperationResult<IGetDesmosProfileByChainLinkResult>> Watch(global::System.String address, global::StrawberryShake.ExecutionStrategy? strategy = null)
         {
             var request = CreateRequest(address);
             return _operationExecutor.Watch(request, strategy);
@@ -237,7 +344,7 @@ namespace LudusBet.GraphQL
 
         private global::StrawberryShake.OperationRequest CreateRequest(global::System.Collections.Generic.IReadOnlyDictionary<global::System.String, global::System.Object?>? variables)
         {
-            return new global::StrawberryShake.OperationRequest(id: GetDesmosProfileByAddressQueryDocument.Instance.Hash.Value, name: "GetDesmosProfileByAddress", document: GetDesmosProfileByAddressQueryDocument.Instance, strategy: global::StrawberryShake.RequestStrategy.Default, variables: variables);
+            return new global::StrawberryShake.OperationRequest(id: GetDesmosProfileByChainLinkQueryDocument.Instance.Hash.Value, name: "GetDesmosProfileByChainLink", document: GetDesmosProfileByChainLinkQueryDocument.Instance, strategy: global::StrawberryShake.RequestStrategy.Default, variables: variables);
         }
 
         private global::System.Object? FormatAddress(global::System.String value)
@@ -257,21 +364,28 @@ namespace LudusBet.GraphQL
     }
 
     /// <summary>
-    /// Represents the operation service of the GetDesmosProfileByAddress GraphQL operation
+    /// Represents the operation service of the GetDesmosProfileByChainLink GraphQL operation
     /// <code>
-    /// query GetDesmosProfileByAddress($address: String!) {
-    ///   profile_by_pk(address: $address) {
+    /// query GetDesmosProfileByChainLink($address: String!) {
+    ///   chain_link(where: { external_address: { _eq: $address } }) {
     ///     __typename
-    ///     address
+    ///     profile {
+    ///       __typename
+    ///       dtag
+    ///       profile_pic
+    ///     }
+    ///     ... on chain_link {
+    ///       id
+    ///     }
     ///   }
     /// }
     /// </code>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.6.0.0")]
-    public partial interface IGetDesmosProfileByAddressQuery : global::StrawberryShake.IOperationRequestFactory
+    public partial interface IGetDesmosProfileByChainLinkQuery : global::StrawberryShake.IOperationRequestFactory
     {
-        global::System.Threading.Tasks.Task<global::StrawberryShake.IOperationResult<IGetDesmosProfileByAddressResult>> ExecuteAsync(global::System.String address, global::System.Threading.CancellationToken cancellationToken = default);
-        global::System.IObservable<global::StrawberryShake.IOperationResult<IGetDesmosProfileByAddressResult>> Watch(global::System.String address, global::StrawberryShake.ExecutionStrategy? strategy = null);
+        global::System.Threading.Tasks.Task<global::StrawberryShake.IOperationResult<IGetDesmosProfileByChainLinkResult>> ExecuteAsync(global::System.String address, global::System.Threading.CancellationToken cancellationToken = default);
+        global::System.IObservable<global::StrawberryShake.IOperationResult<IGetDesmosProfileByChainLinkResult>> Watch(global::System.String address, global::StrawberryShake.ExecutionStrategy? strategy = null);
     }
 
     /// <summary>
@@ -280,14 +394,14 @@ namespace LudusBet.GraphQL
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.6.0.0")]
     public partial class DesmosClient : global::LudusBet.GraphQL.IDesmosClient
     {
-        private readonly global::LudusBet.GraphQL.IGetDesmosProfileByAddressQuery _getDesmosProfileByAddress;
-        public DesmosClient(global::LudusBet.GraphQL.IGetDesmosProfileByAddressQuery getDesmosProfileByAddress)
+        private readonly global::LudusBet.GraphQL.IGetDesmosProfileByChainLinkQuery _getDesmosProfileByChainLink;
+        public DesmosClient(global::LudusBet.GraphQL.IGetDesmosProfileByChainLinkQuery getDesmosProfileByChainLink)
         {
-            _getDesmosProfileByAddress = getDesmosProfileByAddress ?? throw new global::System.ArgumentNullException(nameof(getDesmosProfileByAddress));
+            _getDesmosProfileByChainLink = getDesmosProfileByChainLink ?? throw new global::System.ArgumentNullException(nameof(getDesmosProfileByChainLink));
         }
 
         public static global::System.String ClientName => "DesmosClient";
-        public global::LudusBet.GraphQL.IGetDesmosProfileByAddressQuery GetDesmosProfileByAddress => _getDesmosProfileByAddress;
+        public global::LudusBet.GraphQL.IGetDesmosProfileByChainLinkQuery GetDesmosProfileByChainLink => _getDesmosProfileByChainLink;
     }
 
     /// <summary>
@@ -296,55 +410,76 @@ namespace LudusBet.GraphQL
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.6.0.0")]
     public partial interface IDesmosClient
     {
-        global::LudusBet.GraphQL.IGetDesmosProfileByAddressQuery GetDesmosProfileByAddress { get; }
+        global::LudusBet.GraphQL.IGetDesmosProfileByChainLinkQuery GetDesmosProfileByChainLink { get; }
     }
 }
 
 namespace LudusBet.GraphQL.State
 {
+    ///<summary>columns and relationships of "chain_link"</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.6.0.0")]
-    public partial class GetDesmosProfileByAddressResultFactory : global::StrawberryShake.IOperationResultDataFactory<global::LudusBet.GraphQL.GetDesmosProfileByAddressResult>
+    public partial class chain_linkEntity
     {
-        private readonly global::StrawberryShake.IEntityStore _entityStore;
-        public GetDesmosProfileByAddressResultFactory(global::StrawberryShake.IEntityStore entityStore)
+        public chain_linkEntity(global::LudusBet.GraphQL.State.profileData profile = default !)
         {
-            _entityStore = entityStore ?? throw new global::System.ArgumentNullException(nameof(entityStore));
+            Profile = profile;
         }
 
-        global::System.Type global::StrawberryShake.IOperationResultDataFactory.ResultType => typeof(global::LudusBet.GraphQL.IGetDesmosProfileByAddressResult);
-        public GetDesmosProfileByAddressResult Create(global::StrawberryShake.IOperationResultDataInfo dataInfo, global::StrawberryShake.IEntityStoreSnapshot? snapshot = null)
+        ///<summary>An object relationship</summary>
+        public global::LudusBet.GraphQL.State.profileData Profile { get; }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.6.0.0")]
+    public partial class GetDesmosProfileByChainLinkResultFactory : global::StrawberryShake.IOperationResultDataFactory<global::LudusBet.GraphQL.GetDesmosProfileByChainLinkResult>
+    {
+        private readonly global::StrawberryShake.IEntityStore _entityStore;
+        private readonly global::StrawberryShake.IEntityMapper<global::LudusBet.GraphQL.State.chain_linkEntity, GetDesmosProfileByChainLink_Chain_link_chain_link> _getDesmosProfileByChainLink_Chain_Link_Chain_LinkFromchain_LinkEntityMapper;
+        public GetDesmosProfileByChainLinkResultFactory(global::StrawberryShake.IEntityStore entityStore, global::StrawberryShake.IEntityMapper<global::LudusBet.GraphQL.State.chain_linkEntity, GetDesmosProfileByChainLink_Chain_link_chain_link> getDesmosProfileByChainLink_Chain_Link_Chain_LinkFromchain_LinkEntityMapper)
+        {
+            _entityStore = entityStore ?? throw new global::System.ArgumentNullException(nameof(entityStore));
+            _getDesmosProfileByChainLink_Chain_Link_Chain_LinkFromchain_LinkEntityMapper = getDesmosProfileByChainLink_Chain_Link_Chain_LinkFromchain_LinkEntityMapper ?? throw new global::System.ArgumentNullException(nameof(getDesmosProfileByChainLink_Chain_Link_Chain_LinkFromchain_LinkEntityMapper));
+        }
+
+        global::System.Type global::StrawberryShake.IOperationResultDataFactory.ResultType => typeof(global::LudusBet.GraphQL.IGetDesmosProfileByChainLinkResult);
+        public GetDesmosProfileByChainLinkResult Create(global::StrawberryShake.IOperationResultDataInfo dataInfo, global::StrawberryShake.IEntityStoreSnapshot? snapshot = null)
         {
             if (snapshot is null)
             {
                 snapshot = _entityStore.CurrentSnapshot;
             }
 
-            if (dataInfo is GetDesmosProfileByAddressResultInfo info)
+            if (dataInfo is GetDesmosProfileByChainLinkResultInfo info)
             {
-                return new GetDesmosProfileByAddressResult(MapIGetDesmosProfileByAddress_Profile_by_pk(info.Profile_by_pk, snapshot));
+                return new GetDesmosProfileByChainLinkResult(MapNonNullableIGetDesmosProfileByChainLink_Chain_linkNonNullableArray(info.Chain_link, snapshot));
             }
 
-            throw new global::System.ArgumentException("GetDesmosProfileByAddressResultInfo expected.");
+            throw new global::System.ArgumentException("GetDesmosProfileByChainLinkResultInfo expected.");
         }
 
-        private global::LudusBet.GraphQL.IGetDesmosProfileByAddress_Profile_by_pk? MapIGetDesmosProfileByAddress_Profile_by_pk(global::LudusBet.GraphQL.State.profileData? data, global::StrawberryShake.IEntityStoreSnapshot snapshot)
+        private global::System.Collections.Generic.IReadOnlyList<global::LudusBet.GraphQL.IGetDesmosProfileByChainLink_Chain_link> MapNonNullableIGetDesmosProfileByChainLink_Chain_linkNonNullableArray(global::System.Collections.Generic.IReadOnlyList<global::StrawberryShake.EntityId>? list, global::StrawberryShake.IEntityStoreSnapshot snapshot)
         {
-            if (data is null)
+            if (list is null)
             {
-                return null;
+                throw new global::System.ArgumentNullException();
             }
 
-            IGetDesmosProfileByAddress_Profile_by_pk returnValue = default !;
-            if (data?.__typename.Equals("profile", global::System.StringComparison.Ordinal) ?? false)
+            var chain_Links = new global::System.Collections.Generic.List<global::LudusBet.GraphQL.IGetDesmosProfileByChainLink_Chain_link>();
+            foreach (global::StrawberryShake.EntityId child in list)
             {
-                returnValue = new GetDesmosProfileByAddress_Profile_by_pk_profile(data.Address ?? throw new global::System.ArgumentNullException());
-            }
-            else
-            {
-                throw new global::System.NotSupportedException();
+                chain_Links.Add(MapNonNullableIGetDesmosProfileByChainLink_Chain_link(child, snapshot));
             }
 
-            return returnValue;
+            return chain_Links;
+        }
+
+        private global::LudusBet.GraphQL.IGetDesmosProfileByChainLink_Chain_link MapNonNullableIGetDesmosProfileByChainLink_Chain_link(global::StrawberryShake.EntityId entityId, global::StrawberryShake.IEntityStoreSnapshot snapshot)
+        {
+            if (entityId.Name.Equals("chain_link", global::System.StringComparison.Ordinal))
+            {
+                return _getDesmosProfileByChainLink_Chain_Link_Chain_LinkFromchain_LinkEntityMapper.Map(snapshot.GetEntity<global::LudusBet.GraphQL.State.chain_linkEntity>(entityId) ?? throw new global::StrawberryShake.GraphQLClientException());
+            }
+
+            throw new global::System.NotSupportedException();
         }
 
         global::System.Object global::StrawberryShake.IOperationResultDataFactory.Create(global::StrawberryShake.IOperationResultDataInfo dataInfo, global::StrawberryShake.IEntityStoreSnapshot? snapshot)
@@ -354,38 +489,73 @@ namespace LudusBet.GraphQL.State
     }
 
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.6.0.0")]
-    public partial class GetDesmosProfileByAddressResultInfo : global::StrawberryShake.IOperationResultDataInfo
+    public partial class GetDesmosProfileByChainLinkResultInfo : global::StrawberryShake.IOperationResultDataInfo
     {
         private readonly global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> _entityIds;
         private readonly global::System.UInt64 _version;
-        public GetDesmosProfileByAddressResultInfo(global::LudusBet.GraphQL.State.profileData? profile_By_Pk, global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> entityIds, global::System.UInt64 version)
+        public GetDesmosProfileByChainLinkResultInfo(global::System.Collections.Generic.IReadOnlyList<global::StrawberryShake.EntityId> chain_Link, global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> entityIds, global::System.UInt64 version)
         {
-            Profile_by_pk = profile_By_Pk;
+            Chain_link = chain_Link;
             _entityIds = entityIds ?? throw new global::System.ArgumentNullException(nameof(entityIds));
             _version = version;
         }
 
         /// <summary>
-        /// fetch data from the table: "profile" using primary key columns
+        /// fetch data from the table: "chain_link"
         /// </summary>
-        public global::LudusBet.GraphQL.State.profileData? Profile_by_pk { get; }
+        public global::System.Collections.Generic.IReadOnlyList<global::StrawberryShake.EntityId> Chain_link { get; }
 
         public global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> EntityIds => _entityIds;
         public global::System.UInt64 Version => _version;
         public global::StrawberryShake.IOperationResultDataInfo WithVersion(global::System.UInt64 version)
         {
-            return new GetDesmosProfileByAddressResultInfo(Profile_by_pk, _entityIds, version);
+            return new GetDesmosProfileByChainLinkResultInfo(Chain_link, _entityIds, version);
         }
     }
 
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.6.0.0")]
-    public partial class GetDesmosProfileByAddressBuilder : global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::LudusBet.GraphQL.IGetDesmosProfileByAddressResult>
+    public partial class GetDesmosProfileByChainLink_Chain_link_chain_linkFromchain_linkEntityMapper : global::StrawberryShake.IEntityMapper<global::LudusBet.GraphQL.State.chain_linkEntity, GetDesmosProfileByChainLink_Chain_link_chain_link>
+    {
+        private readonly global::StrawberryShake.IEntityStore _entityStore;
+        public GetDesmosProfileByChainLink_Chain_link_chain_linkFromchain_linkEntityMapper(global::StrawberryShake.IEntityStore entityStore)
+        {
+            _entityStore = entityStore ?? throw new global::System.ArgumentNullException(nameof(entityStore));
+        }
+
+        public GetDesmosProfileByChainLink_Chain_link_chain_link Map(global::LudusBet.GraphQL.State.chain_linkEntity entity, global::StrawberryShake.IEntityStoreSnapshot? snapshot = null)
+        {
+            if (snapshot is null)
+            {
+                snapshot = _entityStore.CurrentSnapshot;
+            }
+
+            return new GetDesmosProfileByChainLink_Chain_link_chain_link(MapNonNullableIGetDesmosProfileByChainLink_Chain_link_Profile(entity.Profile, snapshot));
+        }
+
+        private global::LudusBet.GraphQL.IGetDesmosProfileByChainLink_Chain_link_Profile MapNonNullableIGetDesmosProfileByChainLink_Chain_link_Profile(global::LudusBet.GraphQL.State.profileData data, global::StrawberryShake.IEntityStoreSnapshot snapshot)
+        {
+            IGetDesmosProfileByChainLink_Chain_link_Profile returnValue = default !;
+            if (data.__typename.Equals("profile", global::System.StringComparison.Ordinal))
+            {
+                returnValue = new GetDesmosProfileByChainLink_Chain_link_Profile_profile(data.Dtag ?? throw new global::System.ArgumentNullException(), data.Profile_pic ?? throw new global::System.ArgumentNullException());
+            }
+            else
+            {
+                throw new global::System.NotSupportedException();
+            }
+
+            return returnValue;
+        }
+    }
+
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.6.0.0")]
+    public partial class GetDesmosProfileByChainLinkBuilder : global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::LudusBet.GraphQL.IGetDesmosProfileByChainLinkResult>
     {
         private readonly global::StrawberryShake.IEntityStore _entityStore;
         private readonly global::StrawberryShake.IEntityIdSerializer _idSerializer;
-        private readonly global::StrawberryShake.IOperationResultDataFactory<global::LudusBet.GraphQL.IGetDesmosProfileByAddressResult> _resultDataFactory;
+        private readonly global::StrawberryShake.IOperationResultDataFactory<global::LudusBet.GraphQL.IGetDesmosProfileByChainLinkResult> _resultDataFactory;
         private readonly global::StrawberryShake.Serialization.ILeafValueParser<global::System.String, global::System.String> _stringParser;
-        public GetDesmosProfileByAddressBuilder(global::StrawberryShake.IEntityStore entityStore, global::StrawberryShake.IEntityIdSerializer idSerializer, global::StrawberryShake.IOperationResultDataFactory<global::LudusBet.GraphQL.IGetDesmosProfileByAddressResult> resultDataFactory, global::StrawberryShake.Serialization.ISerializerResolver serializerResolver)
+        public GetDesmosProfileByChainLinkBuilder(global::StrawberryShake.IEntityStore entityStore, global::StrawberryShake.IEntityIdSerializer idSerializer, global::StrawberryShake.IOperationResultDataFactory<global::LudusBet.GraphQL.IGetDesmosProfileByChainLinkResult> resultDataFactory, global::StrawberryShake.Serialization.ISerializerResolver serializerResolver)
         {
             _entityStore = entityStore ?? throw new global::System.ArgumentNullException(nameof(entityStore));
             _idSerializer = idSerializer ?? throw new global::System.ArgumentNullException(nameof(idSerializer));
@@ -393,9 +563,9 @@ namespace LudusBet.GraphQL.State
             _stringParser = serializerResolver.GetLeafValueParser<global::System.String, global::System.String>("String") ?? throw new global::System.ArgumentException("No serializer for type `String` found.");
         }
 
-        public global::StrawberryShake.IOperationResult<IGetDesmosProfileByAddressResult> Build(global::StrawberryShake.Response<global::System.Text.Json.JsonDocument> response)
+        public global::StrawberryShake.IOperationResult<IGetDesmosProfileByChainLinkResult> Build(global::StrawberryShake.Response<global::System.Text.Json.JsonDocument> response)
         {
-            (IGetDesmosProfileByAddressResult Result, GetDesmosProfileByAddressResultInfo Info)? data = null;
+            (IGetDesmosProfileByChainLinkResult Result, GetDesmosProfileByChainLinkResultInfo Info)? data = null;
             global::System.Collections.Generic.IReadOnlyList<global::StrawberryShake.IClientError>? errors = null;
             if (response.Exception is null)
             {
@@ -431,32 +601,76 @@ namespace LudusBet.GraphQL.State
                 }
             }
 
-            return new global::StrawberryShake.OperationResult<IGetDesmosProfileByAddressResult>(data?.Result, data?.Info, _resultDataFactory, errors);
+            return new global::StrawberryShake.OperationResult<IGetDesmosProfileByChainLinkResult>(data?.Result, data?.Info, _resultDataFactory, errors);
         }
 
-        private (IGetDesmosProfileByAddressResult, GetDesmosProfileByAddressResultInfo) BuildData(global::System.Text.Json.JsonElement obj)
+        private (IGetDesmosProfileByChainLinkResult, GetDesmosProfileByChainLinkResultInfo) BuildData(global::System.Text.Json.JsonElement obj)
         {
             var entityIds = new global::System.Collections.Generic.HashSet<global::StrawberryShake.EntityId>();
             global::StrawberryShake.IEntityStoreSnapshot snapshot = default !;
+            global::System.Collections.Generic.IReadOnlyList<global::StrawberryShake.EntityId> chain_LinkId = default !;
             _entityStore.Update(session =>
             {
+                chain_LinkId = UpdateNonNullableIGetDesmosProfileByChainLink_Chain_linkEntityNonNullableArray(session, global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "chain_link"), entityIds);
                 snapshot = session.CurrentSnapshot;
             });
-            var resultInfo = new GetDesmosProfileByAddressResultInfo(DeserializeIGetDesmosProfileByAddress_Profile_by_pk(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "profile_by_pk")), entityIds, snapshot.Version);
+            var resultInfo = new GetDesmosProfileByChainLinkResultInfo(chain_LinkId, entityIds, snapshot.Version);
             return (_resultDataFactory.Create(resultInfo), resultInfo);
         }
 
-        private global::LudusBet.GraphQL.State.profileData? DeserializeIGetDesmosProfileByAddress_Profile_by_pk(global::System.Text.Json.JsonElement? obj)
+        private global::System.Collections.Generic.IReadOnlyList<global::StrawberryShake.EntityId> UpdateNonNullableIGetDesmosProfileByChainLink_Chain_linkEntityNonNullableArray(global::StrawberryShake.IEntityStoreUpdateSession session, global::System.Text.Json.JsonElement? obj, global::System.Collections.Generic.ISet<global::StrawberryShake.EntityId> entityIds)
         {
             if (!obj.HasValue)
             {
-                return null;
+                throw new global::System.ArgumentNullException();
+            }
+
+            var chain_Links = new global::System.Collections.Generic.List<global::StrawberryShake.EntityId>();
+            foreach (global::System.Text.Json.JsonElement child in obj.Value.EnumerateArray())
+            {
+                chain_Links.Add(UpdateNonNullableIGetDesmosProfileByChainLink_Chain_linkEntity(session, child, entityIds));
+            }
+
+            return chain_Links;
+        }
+
+        private global::StrawberryShake.EntityId UpdateNonNullableIGetDesmosProfileByChainLink_Chain_linkEntity(global::StrawberryShake.IEntityStoreUpdateSession session, global::System.Text.Json.JsonElement? obj, global::System.Collections.Generic.ISet<global::StrawberryShake.EntityId> entityIds)
+        {
+            if (!obj.HasValue)
+            {
+                throw new global::System.ArgumentNullException();
+            }
+
+            global::StrawberryShake.EntityId entityId = _idSerializer.Parse(obj.Value);
+            entityIds.Add(entityId);
+            if (entityId.Name.Equals("chain_link", global::System.StringComparison.Ordinal))
+            {
+                if (session.CurrentSnapshot.TryGetEntity(entityId, out global::LudusBet.GraphQL.State.chain_linkEntity? entity))
+                {
+                    session.SetEntity(entityId, new global::LudusBet.GraphQL.State.chain_linkEntity(DeserializeNonNullableIGetDesmosProfileByChainLink_Chain_link_Profile(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "profile"))));
+                }
+                else
+                {
+                    session.SetEntity(entityId, new global::LudusBet.GraphQL.State.chain_linkEntity(DeserializeNonNullableIGetDesmosProfileByChainLink_Chain_link_Profile(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "profile"))));
+                }
+
+                return entityId;
+            }
+
+            throw new global::System.NotSupportedException();
+        }
+
+        private global::LudusBet.GraphQL.State.profileData DeserializeNonNullableIGetDesmosProfileByChainLink_Chain_link_Profile(global::System.Text.Json.JsonElement? obj)
+        {
+            if (!obj.HasValue)
+            {
+                throw new global::System.ArgumentNullException();
             }
 
             var typename = obj.Value.GetProperty("__typename").GetString();
             if (typename?.Equals("profile", global::System.StringComparison.Ordinal) ?? false)
             {
-                return new global::LudusBet.GraphQL.State.profileData(typename, address: DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "address")));
+                return new global::LudusBet.GraphQL.State.profileData(typename, dtag: DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "dtag")), profile_Pic: DeserializeNonNullableString(global::StrawberryShake.Json.JsonElementExtensions.GetPropertyOrNull(obj, "profile_pic")));
             }
 
             throw new global::System.NotSupportedException();
@@ -477,15 +691,18 @@ namespace LudusBet.GraphQL.State
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.6.0.0")]
     public partial class profileData
     {
-        public profileData(global::System.String __typename, global::System.String? address = default !)
+        public profileData(global::System.String __typename, global::System.String? dtag = default !, global::System.String? profile_Pic = default !)
         {
             this.__typename = __typename ?? throw new global::System.ArgumentNullException(nameof(__typename));
-            Address = address;
+            Dtag = dtag;
+            Profile_pic = profile_Pic;
         }
 
         public global::System.String __typename { get; }
 
-        public global::System.String? Address { get; }
+        public global::System.String? Dtag { get; }
+
+        public global::System.String? Profile_pic { get; }
     }
 
     [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.6.0.0")]
@@ -498,6 +715,7 @@ namespace LudusBet.GraphQL.State
             global::System.String __typename = obj.GetProperty("__typename").GetString()!;
             return __typename switch
             {
+                "chain_link" => Parsechain_linkEntityId(obj, __typename),
                 _ => throw new global::System.NotSupportedException()};
         }
 
@@ -505,7 +723,25 @@ namespace LudusBet.GraphQL.State
         {
             return entityId.Name switch
             {
+                "chain_link" => Formatchain_linkEntityId(entityId),
                 _ => throw new global::System.NotSupportedException()};
+        }
+
+        private global::StrawberryShake.EntityId Parsechain_linkEntityId(global::System.Text.Json.JsonElement obj, global::System.String type)
+        {
+            return new global::StrawberryShake.EntityId(type, obj.GetProperty("id").GetInt32()!);
+        }
+
+        private global::System.String Formatchain_linkEntityId(global::StrawberryShake.EntityId entityId)
+        {
+            using var writer = new global::StrawberryShake.Internal.ArrayWriter();
+            using var jsonWriter = new global::System.Text.Json.Utf8JsonWriter(writer, _options);
+            jsonWriter.WriteStartObject();
+            jsonWriter.WriteString("__typename", entityId.Name);
+            jsonWriter.WriteNumber("id", (global::System.Int32)entityId.Value);
+            jsonWriter.WriteEndObject();
+            jsonWriter.Flush();
+            return global::System.Text.Encoding.UTF8.GetString(writer.GetInternalBuffer(), 0, writer.Length);
         }
     }
 
@@ -532,7 +768,7 @@ namespace Microsoft.Extensions.DependencyInjection
                 return new ClientServiceProvider(global::Microsoft.Extensions.DependencyInjection.ServiceCollectionContainerBuilderExtensions.BuildServiceProvider(serviceCollection));
             });
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => new global::LudusBet.GraphQL.State.DesmosClientStoreAccessor(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationStore>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IEntityStore>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IEntityIdSerializer>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::System.Collections.Generic.IEnumerable<global::StrawberryShake.IOperationRequestFactory>>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::System.Collections.Generic.IEnumerable<global::StrawberryShake.IOperationResultDataFactory>>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp))));
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::LudusBet.GraphQL.GetDesmosProfileByAddressQuery>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::LudusBet.GraphQL.GetDesmosProfileByChainLinkQuery>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::LudusBet.GraphQL.DesmosClient>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::LudusBet.GraphQL.IDesmosClient>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<ClientServiceProvider>(sp)));
             return new global::StrawberryShake.ClientBuilder<global::LudusBet.GraphQL.State.DesmosClientStoreAccessor>("DesmosClient", services, serviceCollection);
@@ -547,6 +783,7 @@ namespace Microsoft.Extensions.DependencyInjection
                 var clientFactory = global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::System.Net.Http.IHttpClientFactory>(parentServices);
                 return new global::StrawberryShake.Transport.Http.HttpConnection(() => clientFactory.CreateClient("DesmosClient"));
             });
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IEntityMapper<global::LudusBet.GraphQL.State.chain_linkEntity, global::LudusBet.GraphQL.GetDesmosProfileByChainLink_Chain_link_chain_link>, global::LudusBet.GraphQL.State.GetDesmosProfileByChainLink_Chain_link_chain_linkFromchain_linkEntityMapper>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::StrawberryShake.Serialization.StringSerializer>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::StrawberryShake.Serialization.BooleanSerializer>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::StrawberryShake.Serialization.ByteSerializer>(services);
@@ -564,13 +801,13 @@ namespace Microsoft.Extensions.DependencyInjection
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::StrawberryShake.Serialization.TimeSpanSerializer>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializer, global::StrawberryShake.Serialization.JsonSerializer>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.Serialization.ISerializerResolver>(services, sp => new global::StrawberryShake.Serialization.SerializerResolver(global::System.Linq.Enumerable.Concat(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::System.Collections.Generic.IEnumerable<global::StrawberryShake.Serialization.ISerializer>>(parentServices), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::System.Collections.Generic.IEnumerable<global::StrawberryShake.Serialization.ISerializer>>(sp))));
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultDataFactory<global::LudusBet.GraphQL.IGetDesmosProfileByAddressResult>, global::LudusBet.GraphQL.State.GetDesmosProfileByAddressResultFactory>(services);
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultDataFactory>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationResultDataFactory<global::LudusBet.GraphQL.IGetDesmosProfileByAddressResult>>(sp));
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationRequestFactory>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::LudusBet.GraphQL.IGetDesmosProfileByAddressQuery>(sp));
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::LudusBet.GraphQL.IGetDesmosProfileByAddressResult>, global::LudusBet.GraphQL.State.GetDesmosProfileByAddressBuilder>(services);
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationExecutor<global::LudusBet.GraphQL.IGetDesmosProfileByAddressResult>>(services, sp => new global::StrawberryShake.OperationExecutor<global::System.Text.Json.JsonDocument, global::LudusBet.GraphQL.IGetDesmosProfileByAddressResult>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.Transport.Http.IHttpConnection>(sp), () => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::LudusBet.GraphQL.IGetDesmosProfileByAddressResult>>(sp), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationStore>(sp), strategy));
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::LudusBet.GraphQL.GetDesmosProfileByAddressQuery>(services);
-            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::LudusBet.GraphQL.IGetDesmosProfileByAddressQuery>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::LudusBet.GraphQL.GetDesmosProfileByAddressQuery>(sp));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultDataFactory<global::LudusBet.GraphQL.IGetDesmosProfileByChainLinkResult>, global::LudusBet.GraphQL.State.GetDesmosProfileByChainLinkResultFactory>(services);
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultDataFactory>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationResultDataFactory<global::LudusBet.GraphQL.IGetDesmosProfileByChainLinkResult>>(sp));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationRequestFactory>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::LudusBet.GraphQL.IGetDesmosProfileByChainLinkQuery>(sp));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::LudusBet.GraphQL.IGetDesmosProfileByChainLinkResult>, global::LudusBet.GraphQL.State.GetDesmosProfileByChainLinkBuilder>(services);
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IOperationExecutor<global::LudusBet.GraphQL.IGetDesmosProfileByChainLinkResult>>(services, sp => new global::StrawberryShake.OperationExecutor<global::System.Text.Json.JsonDocument, global::LudusBet.GraphQL.IGetDesmosProfileByChainLinkResult>(global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.Transport.Http.IHttpConnection>(sp), () => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::LudusBet.GraphQL.IGetDesmosProfileByChainLinkResult>>(sp), global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::StrawberryShake.IOperationStore>(sp), strategy));
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::LudusBet.GraphQL.GetDesmosProfileByChainLinkQuery>(services);
+            global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::LudusBet.GraphQL.IGetDesmosProfileByChainLinkQuery>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::LudusBet.GraphQL.GetDesmosProfileByChainLinkQuery>(sp));
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::StrawberryShake.IEntityIdSerializer, global::LudusBet.GraphQL.State.DesmosClientEntityIdFactory>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::LudusBet.GraphQL.DesmosClient>(services);
             global::Microsoft.Extensions.DependencyInjection.ServiceCollectionServiceExtensions.AddSingleton<global::LudusBet.GraphQL.IDesmosClient>(services, sp => global::Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService<global::LudusBet.GraphQL.DesmosClient>(sp));
