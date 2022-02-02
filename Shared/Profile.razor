@@ -5,21 +5,21 @@
 
 @if (keplr.Account is null)
 {
-    <MudButton Class="ma-auto" Variant="Variant.Filled" StartIcon="@Icons.Material.Filled.AccountBalanceWallet" Color="Color.Secondary" OnClick="keplr.ConnectKeplrAccount">Connect Wallet</MudButton>
+    <MudButton Class="my-auto mr-4" Variant="Variant.Filled" StartIcon="@Icons.Material.Filled.AccountBalanceWallet" Color="Color.Secondary" OnClick="keplr.ConnectKeplrAccount">Connect Wallet</MudButton>
 }
 else
 {
-    <MudPaper Class="ma-2 pa-2 d-flex align-center">
+    <MudPaper Class="my-auto mr-4 pa-2 d-flex align-center" id="web3Profile" @onkeplrkeystorechange="@(async (e) => await keplr.ConnectKeplrAccount())">
         @if (desmos.DesmosProfile is null)
         {
-            <MudText Typo="Typo.subtitle2">
+            <MudText Typo="Typo.subtitle2" Class="ml-2">
                 @keplr.Account.Address
             </MudText>
         }
         else
         {
-            <MudAvatar Class="mr-2" Size="Size.Medium" Image="@desmos.DesmosProfile.ProfilePicture" />
-            <MudText Typo="Typo.subtitle2">
+            <MudAvatar Size="Size.Medium" Image="@desmos.DesmosProfile.ProfilePicture" />
+            <MudText Typo="Typo.subtitle2" Class="ml-2">
                 @desmos.DesmosProfile.DTag
             </MudText>
         }
@@ -46,7 +46,7 @@ else
                     <MudIcon Class="mr-2" Icon="@Icons.Material.Filled.CopyAll" aria-label="copy" Size="Size.Small" /> Copy Address
                 </MudText>
             </MudMenuItem>
-            <MudMenuItem OnClick="keplr.Logout">
+            <MudMenuItem OnClick="keplr.LogOut">
                 <MudText Class="d-flex align-center">
                     <MudIcon Class="mr-2" Icon="@Icons.Material.Filled.Logout" aria-label="log out" Size="Size.Small" /> Log Out
                 </MudText>

@@ -87,6 +87,11 @@ namespace LudusBet.Services
             return null;
         }
 
+        public void LogOut()
+        {
+            DesmosProfile = null;
+        }
+
         #endregion Methods
     }
 }

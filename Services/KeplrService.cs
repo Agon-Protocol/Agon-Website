@@ -52,7 +52,7 @@ namespace LudusBet.Services
             try
             {
                 KeplrKey? keplrKey = await _js.InvokeAsync<KeplrKey?>("ludus.connectKeplr", _config["Networks:Juno:ChainId"]);
-                if (keplrKey == null)
+                if (keplrKey is null)
                 {
                     _dialogService.Show<InstallKeplrDialog>("Warning");
                 }
@@ -64,6 +64,7 @@ namespace LudusBet.Services
                         Name = keplrKey.Name,
                     };
 
+                    _desmosService.DesmosProfile = null;
                     if (keplrKey.Bech32Address != null)
                         await _desmosService.ConnectDesmosProfileByExternalAddress(keplrKey.Bech32Address);
                 }
@@ -80,9 +81,10 @@ namespace LudusBet.Services
             }
         }
 
-        public void Logout()
+        public void LogOut()
         {
             Account = null;
+            _desmosService.LogOut();
         }
 
         #endregion Methods

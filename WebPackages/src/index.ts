@@ -7,9 +7,11 @@ declare global {
     interface Window extends KeplrWindow { }
 }
 
-window.addEventListener("keplr_keystorechange", () => {
-    console.log("Key store in Keplr is changed. You may need to refetch the account info.")
-})
+window.addEventListener("keplr_keystorechange", (e) => {
+    //forward this event to the profile control
+    var web3Profile = document.getElementById("web3Profile");
+    web3Profile.dispatchEvent(new Event("keplrkeystorechange", { bubbles: true }));
+});
 
 export async function connectKeplr(chainId: string): Promise<Key | null> {
     if (!window.keplr) {
