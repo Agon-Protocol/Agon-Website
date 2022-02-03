@@ -6,10 +6,8 @@
 
 .pong-content {
     position: absolute;
-    top: 45%;
-    left: 57.5%;
-    transform: translate(-50%, -50%);
-    display: block;
+    top: 40%;
+    left: 50%;
 }
 
 .paddle {
@@ -21,13 +19,13 @@
 
 .player_one {
     @extend .paddle;
-    left: -180px;
+    left: -100px;
     animation: movePaddleOne 4s infinite;
 }
 
 .player_two {
     @extend .paddle;
-    left: 20px;
+    left: 100px;
     animation: movePaddleTwo 4s infinite;
 }
 
@@ -78,19 +76,19 @@
 
 @keyframes moveBall {
     0%, 100% {
-        transform: translate(-180px, 30px);
+        transform: translate(-98px, 30px);
     }
 
     25% {
-        transform: translate(18px, -25px);
+        transform: translate(98px, -25px);
     }
 
     50% {
-        transform: translate(-180px, -55px);
+        transform: translate(-98px, -55px);
     }
 
     75% {
-        transform: translate(18px, 15px);
+        transform: translate(98px, 15px);
     }
 }
 
