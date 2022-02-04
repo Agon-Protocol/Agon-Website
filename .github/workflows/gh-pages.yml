@@ -38,7 +38,7 @@ jobs:
         - name: Deploy to Skynet
           uses: SkynetLabs/deploy-to-skynet-action@v2
           with:
-            upload-dir: wwwroot
+            upload-dir: bin/Release/net6.0/publish/wwwroot
             github-token: ${{ secrets.GITHUB_TOKEN }}
             registry-seed: ${{ secrets.REGISTRY_SEED || '' }}
             registry-datakey: ${{ secrets.REGISTRY_DATAKEY || '' }}
