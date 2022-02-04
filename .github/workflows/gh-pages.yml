@@ -42,4 +42,4 @@ jobs:
             github-token: ${{ secrets.GITHUB_TOKEN }}
             registry-seed: ${{ secrets.REGISTRY_SEED || '' }}
             registry-datakey: ${{ secrets.REGISTRY_DATAKEY || '' }}
-            not-found-page: 404.html
+            not-found-page: bin/Release/net6.0/publish/wwwroot/404.html
