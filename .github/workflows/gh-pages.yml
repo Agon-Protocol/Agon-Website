@@ -9,7 +9,7 @@ on:
       
 env:
   PROJECT_NAME: LudusBet.csproj
-  PUBLISH_DIR: /home/runner/work/Ludus-Website/Ludus-Website/bin/Publish/wwwroot
+  PUBLISH_DIR: /home/runner/work/Ludus-Website/Ludus-Website/bin/Publish/wwwroot/
       
 jobs:
   build:
@@ -43,4 +43,4 @@ jobs:
             github-token: ${{ secrets.GITHUB_TOKEN }}
             registry-seed: ${{ secrets.REGISTRY_SEED || '' }}
             registry-datakey: ${{ secrets.REGISTRY_DATAKEY || '' }}
-            not-found-page: ${{ env.PUBLISH_DIR }}/404.html
+            not-found-page: ${{ env.PUBLISH_DIR }}404.html
