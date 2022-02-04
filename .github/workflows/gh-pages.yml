@@ -9,7 +9,6 @@ on:
       
 env:
   PROJECT_NAME: LudusBet.csproj
-  PUBLISH_DIR: /home/runner/work/Ludus-Website/Ludus-Website/bin/Publish/wwwroot
       
 jobs:
   build:
@@ -39,8 +38,8 @@ jobs:
         - name: Deploy to Skynet
           uses: SkynetLabs/deploy-to-skynet-action@v2
           with:
-            upload-dir: $PUBLISH_DIR
+            upload-dir: /home/runner/work/Ludus-Website/Ludus-Website/bin/Publish/wwwroot/
             github-token: ${{ secrets.GITHUB_TOKEN }}
             registry-seed: ${{ secrets.REGISTRY_SEED || '' }}
             registry-datakey: ${{ secrets.REGISTRY_DATAKEY || '' }}
-            not-found-page: $PUBLISH_DIR/404.html
+            not-found-page: 404.html
