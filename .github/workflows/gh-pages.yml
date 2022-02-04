@@ -39,8 +39,8 @@ jobs:
         - name: Deploy to Skynet
           uses: SkynetLabs/deploy-to-skynet-action@v2
           with:
-            upload-dir: $WWWROOT_DIR
+            upload-dir: ${{ WWWROOT_DIR }}
             github-token: ${{ secrets.GITHUB_TOKEN }}
             registry-seed: ${{ secrets.REGISTRY_SEED || '' }}
             registry-datakey: ${{ secrets.REGISTRY_DATAKEY || '' }}
-            not-found-page: "{{ $WWWROOT_DIR }}/404.html"
+            not-found-page: "${{ WWWROOT_DIR }}/404.html"
