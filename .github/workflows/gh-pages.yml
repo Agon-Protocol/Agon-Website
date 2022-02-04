@@ -38,7 +38,7 @@ jobs:
         - name: Deploy to Skynet
           uses: SkynetLabs/deploy-to-skynet-action@v2
           with:
-            upload-dir: /home/runner/work/Ludus-Website/Ludus-Website/bin/Publish/wwwroot/
+            upload-dir: bin/Publish/wwwroot/
             github-token: ${{ secrets.GITHUB_TOKEN }}
             registry-seed: ${{ secrets.REGISTRY_SEED || '' }}
             registry-datakey: ${{ secrets.REGISTRY_DATAKEY || '' }}
