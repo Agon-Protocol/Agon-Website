@@ -36,7 +36,7 @@ jobs:
 
         # Publish the website
         - name: Deploy to Skynet
-          uses: SkynetLabs/deploy-to-skynet-action@v2
+          uses: SkynetLabs/deploy-to-skynet-action@main
           with:
             upload-dir: bin/Publish/wwwroot/
             github-token: ${{ secrets.GITHUB_TOKEN }}
