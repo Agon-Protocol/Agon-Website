@@ -2,7 +2,7 @@ name: 'Publish Web App'
 on: 
   pull_request:
   push:
-      branches: [main]
+      branches: [prod/main]
       
 env:
   PROJECT_NAME: LudusBet.csproj
