@@ -1,7 +1,7 @@
 {
-  "name": "ludusbet",
+  "name": "agon",
   "version": "1.0.0",
-  "description": "This is a list of packages for the Ludus Bet frontend.",
+  "description": "This is a list of packages for the Agon frontend.",
   "private": true,
   "scripts": {
     "sass": "sass --no-source-map --style=compressed src/style.scss ../wwwroot/css/style.min.css",

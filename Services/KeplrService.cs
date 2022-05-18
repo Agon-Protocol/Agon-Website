@@ -1,9 +1,9 @@
-﻿using LudusBet.Models;
-using LudusBet.Shared.Dialogs;
+﻿using Agon.Website.Models;
+using Agon.Website.Shared.Dialogs;
 using Microsoft.JSInterop;
 using MudBlazor;
 
-namespace LudusBet.Services
+namespace Agon.Website.Services
 {
     public class KeplrService : StateContainer
     {
@@ -51,7 +51,7 @@ namespace LudusBet.Services
         {
             try
             {
-                KeplrKey? keplrKey = await _js.InvokeAsync<KeplrKey?>("ludus.connectKeplr", _config["Networks:Juno:ChainId"]);
+                KeplrKey? keplrKey = await _js.InvokeAsync<KeplrKey?>("agon.connectKeplr", _config["Networks:Juno:ChainId"]);
                 if (keplrKey is null)
                 {
                     _dialogService.Show<InstallKeplrDialog>("Warning");

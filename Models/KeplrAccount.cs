@@ -1,4 +1,4 @@
-﻿namespace LudusBet.Models
+﻿namespace Agon.Website.Models
 {
     public class KeplrAccount
     {

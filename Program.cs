@@ -1,6 +1,6 @@
 using Blazored.LocalStorage;
-using LudusBet;
-using LudusBet.Services;
+using Agon.Website;
+using Agon.Website.Services;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using MudBlazor.Services;

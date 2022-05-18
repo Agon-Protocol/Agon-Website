@@ -1,6 +1,6 @@
 {
-  "name": "LudusBet",
-  "short_name": "LudusBet",
+  "name": "Agon.Website",
+  "short_name": "Agon.Website",
   "start_url": "./",
   "display": "standalone",
   "background_color": "#161717",

@@ -1,8 +1,8 @@
 ﻿using Blazored.LocalStorage;
-using LudusBet.GraphQL;
-using LudusBet.Models;
+using Agon.Website.GraphQL;
+using Agon.Website.Models;
 
-namespace LudusBet.Services
+namespace Agon.Website.Services
 {
     public class DesmosService : StateContainer
     {

@@ -14,12 +14,12 @@
         </LayoutView>
     </NotFound>
 </Router>
-<MudThemeProvider DefaultScrollbar="true" Theme="LudusDarkTheme" />
+<MudThemeProvider DefaultScrollbar="true" Theme="_darkTheme" />
 <MudDialogProvider />
 <MudSnackbarProvider />
 
 @code {
-    MudTheme LudusDarkTheme = new MudTheme()
+    private MudTheme _darkTheme = new MudTheme()
         {
             Palette = new Palette()
             {

@@ -1,6 +1,6 @@
-﻿using LudusBet.GraphQL;
+﻿using Agon.Website.GraphQL;
 
-namespace LudusBet.Models
+namespace Agon.Website.Models
 {
     public class DesmosProfile
     {

@@ -27,10 +27,10 @@ module.exports = {
     },
     output: {
         path: path.resolve(__dirname, '../wwwroot/js'),
-        filename: "ludus.min.js",
+        filename: "agon.min.js",
         library: {
             type: "umd",
-            name: "ludus",
+            name: "agon",
         },
     },
     resolve: {

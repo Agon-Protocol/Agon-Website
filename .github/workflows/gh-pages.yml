@@ -5,7 +5,7 @@ on:
       branches: [prod/main]
       
 env:
-  PROJECT_NAME: LudusBet.csproj
+  PROJECT_NAME: Agon.Website.csproj
       
 jobs:
   build:
@@ -42,7 +42,7 @@ jobs:
         #    allow_empty_commit: false
         #    keep_files: false
         #    force_orphan: true
-        #    cname: ludus.bet
+        #    cname: agon.bet
 
         # Publish the website
         - name: Deploy to Skynet

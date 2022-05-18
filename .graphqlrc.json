@@ -4,7 +4,7 @@
   "extensions": {
     "strawberryShake": {
       "name": "DesmosClient",
-      "namespace":  "LudusBet.GraphQL",
+      "namespace":  "Agon.Website.GraphQL",
       "url": "https://gql.mainnet.desmos.network/v1/graphql",
       "dependencyInjection": true,
       "strictSchemaValidation": true,

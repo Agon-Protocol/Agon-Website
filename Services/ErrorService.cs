@@ -1,6 +1,6 @@
 ﻿using System.Runtime.CompilerServices;
 
-namespace LudusBet.Services
+namespace Agon.Website.Services
 {
     public class ErrorService
     {

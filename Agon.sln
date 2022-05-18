@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31912.275
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LudusBet", "LudusBet.csproj", "{D0566381-F455-4DAB-AF9C-3A61D67FEB51}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Agon.Website", "Agon.Website.csproj", "{D0566381-F455-4DAB-AF9C-3A61D67FEB51}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
