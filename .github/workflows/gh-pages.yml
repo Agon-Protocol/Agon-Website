@@ -32,23 +32,24 @@ jobs:
           run: dotnet publish $PROJECT_NAME --configuration Release -o bin/Publish
 
         # Deploy the website
-        - name: Deploy
-          if: ${{ github.ref == 'refs/heads/main' }}
-          uses: peaceiris/actions-gh-pages@v3
-          with:
-            github_token: ${{ secrets.GITHUB_TOKEN }}
-            publish_branch: gh-pages
-            publish_dir: bin/Publish/wwwroot
-            allow_empty_commit: false
-            keep_files: false
-            force_orphan: true
-            cname: ludus.bet
+        #- name: Deploy
+        #  if: ${{ github.ref == 'refs/heads/main' }}
+        #  uses: peaceiris/actions-gh-pages@v3
+        #  with:
+        #    github_token: ${{ secrets.GITHUB_TOKEN }}
+        #    publish_branch: gh-pages
+        #    publish_dir: bin/Publish/wwwroot
+        #    allow_empty_commit: false
+        #    keep_files: false
+        #    force_orphan: true
+        #    cname: ludus.bet
 
         # Publish the website
-        #- name: Deploy to Skynet
-        #  uses: SkynetLabs/deploy-to-skynet-action@main
-        #  with:
-        #    upload-dir: bin/Publish/wwwroot/
-        #    github-token: ${{ secrets.GITHUB_TOKEN }}
-        #    registry-seed: ${{ secrets.REGISTRY_SEED || '' }}
-        #    registry-datakey: ${{ secrets.REGISTRY_DATAKEY || '' }}
+        - name: Deploy to Skynet
+          uses: SkynetLabs/deploy-to-skynet-action@v2
+          with:
+            upload-dir: bin/Publish/wwwroot/
+            portal-url: https://skynetfree.net
+            skynet-api-key: ${{ secrets.SKYNET_API_KEY }}
+            github-token: ${{ secrets.GITHUB_TOKEN }}
+            registry-seed: ${{ secrets.REGISTRY_SEED || '' }}
