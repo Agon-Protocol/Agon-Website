@@ -10,14 +10,14 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Blazored.LocalStorage" Version="4.1.5" />
-		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="6.0.1" />
-		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="6.0.1" PrivateAssets="all" />
+		<PackageReference Include="Blazored.LocalStorage" Version="4.2.0" />
+		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="6.0.5" />
+		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="6.0.5" PrivateAssets="all" />
 		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.0" />
 		<PackageReference Include="Microsoft.Extensions.Http" Version="6.0.0" />
-		<PackageReference Include="MudBlazor" Version="6.0.5" />
-		<PackageReference Include="StrawberryShake.CodeGeneration.CSharp.Analyzers" Version="12.6.0" />
-		<PackageReference Include="StrawberryShake.Transport.Http" Version="12.6.0" />
+		<PackageReference Include="MudBlazor" Version="6.0.10" />
+		<PackageReference Include="StrawberryShake.CodeGeneration.CSharp.Analyzers" Version="12.9.0" />
+		<PackageReference Include="StrawberryShake.Transport.Http" Version="12.9.0" />
 	</ItemGroup>
 
 	<ItemGroup>
