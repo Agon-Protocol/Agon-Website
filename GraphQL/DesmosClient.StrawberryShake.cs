@@ -3,7 +3,7 @@
 
 namespace LudusBet.GraphQL
 {
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.6.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.9.0.0")]
     public partial class GetDesmosProfileByChainLinkResult : global::System.IEquatable<GetDesmosProfileByChainLinkResult>, IGetDesmosProfileByChainLinkResult
     {
         public GetDesmosProfileByChainLinkResult(global::System.Collections.Generic.IReadOnlyList<global::LudusBet.GraphQL.IGetDesmosProfileByChainLink_Chain_link> chain_Link)
@@ -74,7 +74,7 @@ namespace LudusBet.GraphQL
     /// <summary>
     /// columns and relationships of "chain_link"
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.6.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.9.0.0")]
     public partial class GetDesmosProfileByChainLink_Chain_link_chain_link : global::System.IEquatable<GetDesmosProfileByChainLink_Chain_link_chain_link>, IGetDesmosProfileByChainLink_Chain_link_chain_link
     {
         public GetDesmosProfileByChainLink_Chain_link_chain_link(global::LudusBet.GraphQL.IGetDesmosProfileByChainLink_Chain_link_Profile profile)
@@ -141,7 +141,7 @@ namespace LudusBet.GraphQL
     /// <summary>
     /// columns and relationships of "profile"
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.6.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.9.0.0")]
     public partial class GetDesmosProfileByChainLink_Chain_link_Profile_profile : global::System.IEquatable<GetDesmosProfileByChainLink_Chain_link_Profile_profile>, IGetDesmosProfileByChainLink_Chain_link_Profile_profile
     {
         public GetDesmosProfileByChainLink_Chain_link_Profile_profile(global::System.String dtag, global::System.String profile_Pic)
@@ -206,7 +206,7 @@ namespace LudusBet.GraphQL
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.6.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.9.0.0")]
     public partial interface IGetDesmosProfileByChainLinkResult
     {
         /// <summary>
@@ -218,7 +218,7 @@ namespace LudusBet.GraphQL
     /// <summary>
     /// columns and relationships of "chain_link"
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.6.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.9.0.0")]
     public partial interface IGetDesmosProfileByChainLink_Chain_link
     {
         /// <summary>
@@ -230,7 +230,7 @@ namespace LudusBet.GraphQL
     /// <summary>
     /// columns and relationships of "chain_link"
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.6.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.9.0.0")]
     public partial interface IGetDesmosProfileByChainLink_Chain_link_chain_link : IGetDesmosProfileByChainLink_Chain_link
     {
     }
@@ -238,7 +238,7 @@ namespace LudusBet.GraphQL
     /// <summary>
     /// columns and relationships of "profile"
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.6.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.9.0.0")]
     public partial interface IGetDesmosProfileByChainLink_Chain_link_Profile
     {
         public global::System.String Dtag { get; }
@@ -249,7 +249,7 @@ namespace LudusBet.GraphQL
     /// <summary>
     /// columns and relationships of "profile"
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.6.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.9.0.0")]
     public partial interface IGetDesmosProfileByChainLink_Chain_link_Profile_profile : IGetDesmosProfileByChainLink_Chain_link_Profile
     {
     }
@@ -272,7 +272,7 @@ namespace LudusBet.GraphQL
     /// }
     /// </code>
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.6.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.9.0.0")]
     public partial class GetDesmosProfileByChainLinkQueryDocument : global::StrawberryShake.IDocument
     {
         private GetDesmosProfileByChainLinkQueryDocument()
@@ -311,7 +311,7 @@ namespace LudusBet.GraphQL
     /// }
     /// </code>
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.6.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.9.0.0")]
     public partial class GetDesmosProfileByChainLinkQuery : global::LudusBet.GraphQL.IGetDesmosProfileByChainLinkQuery
     {
         private readonly global::StrawberryShake.IOperationExecutor<IGetDesmosProfileByChainLinkResult> _operationExecutor;
@@ -381,7 +381,7 @@ namespace LudusBet.GraphQL
     /// }
     /// </code>
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.6.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.9.0.0")]
     public partial interface IGetDesmosProfileByChainLinkQuery : global::StrawberryShake.IOperationRequestFactory
     {
         global::System.Threading.Tasks.Task<global::StrawberryShake.IOperationResult<IGetDesmosProfileByChainLinkResult>> ExecuteAsync(global::System.String address, global::System.Threading.CancellationToken cancellationToken = default);
@@ -391,7 +391,7 @@ namespace LudusBet.GraphQL
     /// <summary>
     /// Represents the DesmosClient GraphQL client
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.6.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.9.0.0")]
     public partial class DesmosClient : global::LudusBet.GraphQL.IDesmosClient
     {
         private readonly global::LudusBet.GraphQL.IGetDesmosProfileByChainLinkQuery _getDesmosProfileByChainLink;
@@ -407,7 +407,7 @@ namespace LudusBet.GraphQL
     /// <summary>
     /// Represents the DesmosClient GraphQL client
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.6.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.9.0.0")]
     public partial interface IDesmosClient
     {
         global::LudusBet.GraphQL.IGetDesmosProfileByChainLinkQuery GetDesmosProfileByChainLink { get; }
@@ -417,7 +417,7 @@ namespace LudusBet.GraphQL
 namespace LudusBet.GraphQL.State
 {
     ///<summary>columns and relationships of "chain_link"</summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.6.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.9.0.0")]
     public partial class chain_linkEntity
     {
         public chain_linkEntity(global::LudusBet.GraphQL.State.profileData profile = default !)
@@ -429,7 +429,7 @@ namespace LudusBet.GraphQL.State
         public global::LudusBet.GraphQL.State.profileData Profile { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.6.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.9.0.0")]
     public partial class GetDesmosProfileByChainLinkResultFactory : global::StrawberryShake.IOperationResultDataFactory<global::LudusBet.GraphQL.GetDesmosProfileByChainLinkResult>
     {
         private readonly global::StrawberryShake.IEntityStore _entityStore;
@@ -488,7 +488,7 @@ namespace LudusBet.GraphQL.State
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.6.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.9.0.0")]
     public partial class GetDesmosProfileByChainLinkResultInfo : global::StrawberryShake.IOperationResultDataInfo
     {
         private readonly global::System.Collections.Generic.IReadOnlyCollection<global::StrawberryShake.EntityId> _entityIds;
@@ -513,7 +513,7 @@ namespace LudusBet.GraphQL.State
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.6.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.9.0.0")]
     public partial class GetDesmosProfileByChainLink_Chain_link_chain_linkFromchain_linkEntityMapper : global::StrawberryShake.IEntityMapper<global::LudusBet.GraphQL.State.chain_linkEntity, GetDesmosProfileByChainLink_Chain_link_chain_link>
     {
         private readonly global::StrawberryShake.IEntityStore _entityStore;
@@ -548,7 +548,7 @@ namespace LudusBet.GraphQL.State
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.6.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.9.0.0")]
     public partial class GetDesmosProfileByChainLinkBuilder : global::StrawberryShake.IOperationResultBuilder<global::System.Text.Json.JsonDocument, global::LudusBet.GraphQL.IGetDesmosProfileByChainLinkResult>
     {
         private readonly global::StrawberryShake.IEntityStore _entityStore;
@@ -688,7 +688,7 @@ namespace LudusBet.GraphQL.State
     }
 
     ///<summary>columns and relationships of "profile"</summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.6.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.9.0.0")]
     public partial class profileData
     {
         public profileData(global::System.String __typename, global::System.String? dtag = default !, global::System.String? profile_Pic = default !)
@@ -705,7 +705,7 @@ namespace LudusBet.GraphQL.State
         public global::System.String? Profile_pic { get; }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.6.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.9.0.0")]
     public partial class DesmosClientEntityIdFactory : global::StrawberryShake.IEntityIdSerializer
     {
         private static readonly global::System.Text.Json.JsonWriterOptions _options = new global::System.Text.Json.JsonWriterOptions()
@@ -745,7 +745,7 @@ namespace LudusBet.GraphQL.State
         }
     }
 
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.6.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.9.0.0")]
     public partial class DesmosClientStoreAccessor : global::StrawberryShake.StoreAccessor
     {
         public DesmosClientStoreAccessor(global::StrawberryShake.IOperationStore operationStore, global::StrawberryShake.IEntityStore entityStore, global::StrawberryShake.IEntityIdSerializer entityIdSerializer, global::System.Collections.Generic.IEnumerable<global::StrawberryShake.IOperationRequestFactory> requestFactories, global::System.Collections.Generic.IEnumerable<global::StrawberryShake.IOperationResultDataFactory> resultDataFactories) : base(operationStore, entityStore, entityIdSerializer, requestFactories, resultDataFactories)
@@ -756,7 +756,7 @@ namespace LudusBet.GraphQL.State
 
 namespace Microsoft.Extensions.DependencyInjection
 {
-    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.6.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("StrawberryShake", "12.9.0.0")]
     public static partial class DesmosClientServiceCollectionExtensions
     {
         public static global::StrawberryShake.IClientBuilder<global::LudusBet.GraphQL.State.DesmosClientStoreAccessor> AddDesmosClient(this global::Microsoft.Extensions.DependencyInjection.IServiceCollection services, global::StrawberryShake.ExecutionStrategy strategy = global::StrawberryShake.ExecutionStrategy.NetworkOnly)
