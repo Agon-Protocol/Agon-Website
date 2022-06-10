@@ -51,7 +51,14 @@ namespace Agon.Website.Services
         {
             try
             {
-                KeplrKey? keplrKey = await _js.InvokeAsync<KeplrKey?>("agon.connectKeplr", _config["Networks:Juno:ChainId"]);
+                var networkConfig = _config.GetSection("Networks:Archway");
+
+                Console.Write(networkConfig);
+                KeplrKey? keplrKey = await _js.InvokeAsync<KeplrKey?>("agon.suggestChain", 
+                    networkConfig["ChainId"], networkConfig["ChainName"], networkConfig["RPC"], 
+                    networkConfig["Rest"], networkConfig["CoinType"], networkConfig["AccountPrefix"], 
+                    networkConfig["CoinDenom"], networkConfig["CoinMinDenom"], networkConfig["CoinDecimals"]);
+
                 if (keplrKey is null)
                 {
                     _dialogService.Show<InstallKeplrDialog>("Warning");

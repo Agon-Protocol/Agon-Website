@@ -11,16 +11,18 @@ namespace Agon.Website.Services
         private readonly DesmosClient _desmosClient;
         private readonly ErrorService _errorService;
         private readonly ILocalStorageService _localStorageService;
+        private readonly IConfiguration _config;
 
         #endregion Fields
 
         #region Constructors
 
-        public DesmosService(DesmosClient desmosClient, ErrorService errorService, ILocalStorageService localStorageService)
+        public DesmosService(DesmosClient desmosClient, ErrorService errorService, ILocalStorageService localStorageService, IConfiguration config)
         {
             _desmosClient = desmosClient;
             _errorService = errorService;
             _localStorageService = localStorageService;
+            _config = config;
         }
 
         #endregion Constructors
@@ -62,7 +64,7 @@ namespace Agon.Website.Services
 
             if (profileQueryResult != null)
             {
-                DesmosProfile = new DesmosProfile(profileQueryResult);
+                DesmosProfile = new DesmosProfile(profileQueryResult, _config["Networks:Desmos:Explorer"]);
                 await _localStorageService.SetItemAsync(address, DesmosProfile);
             }
         }

@@ -16,97 +16,69 @@ window.addEventListener("keplr_keystorechange", (e) => {
 export async function connectKeplr(chainId: string): Promise<Key | null> {
     if (!window.keplr) {
         return null;
-    } else {
-        // Enabling before using the Keplr is recommended.
-        // This method will ask the user whether to allow access if they haven't visited this website.
-        // Also, it will request that the user unlock the wallet if the wallet is locked.
-        await window.keplr.enable(chainId);
-
-        var key = await window.keplr.getKey(chainId);
-
-        return key;
     }
+    
+    // Enabling before using the Keplr is recommended.
+    // This method will ask the user whether to allow access if they haven't visited this website.
+    // Also, it will request that the user unlock the wallet if the wallet is locked.
+    await window.keplr.enable(chainId);
+
+    var key = await window.keplr.getKey(chainId);
+
+    return key;
 }
 
-export async function connectKeplrToDesmos(chainId: string, rpc: string, rest: string): Promise<Key | null> {
+export async function suggestChain(chainId: string, chainName: string, rpc: string,
+    rest: string, coinType: number, accountPrefix: string,
+    coinDenom: string, coinMinDenom: string, coinDecimals: number): Promise<Key | null> {
     if (!window.keplr.experimentalSuggestChain) {
         return null;
     }
 
-    // Keplr defaults to a derivation path using coin_type = 118, but Desmos uses coin_type = 852.
-    // A desmos profile would have to be set up under Keplr's derivation path, or forbole x should expose an api.
-    // https://keplr.crunch.help/keplr-wallet-features/how-to-set-a-custom-derivation-path
     await window.keplr.experimentalSuggestChain({
         chainId: chainId,
-        // The name of the chain to be displayed to the user.
-        chainName: "Desmos",
-        // RPC endpoint of the chain.
+        chainName: chainName,
         rpc: rpc,
-        // REST endpoint of the chain.
         rest: rest,
-        // Staking coin information
-        stakeCurrency: {
-            // Coin denomination to be displayed to the user.
-            coinDenom: "DSM",
-            // Actual denom (i.e. uatom, uscrt) used by the blockchain.
-            coinMinimalDenom: "udsm",
-            // # of decimal points to convert minimal denomination to user-facing denomination.
-            coinDecimals: 6,
-            // (Optional) Keplr can show the fiat value of the coin if a coingecko id is provided.
-            // You can get id from https://api.coingecko.com/api/v3/coins/list if it is listed.
-            coinGeckoId: "desmos"
-        },
-        // (Optional) If you have a wallet webpage used to stake the coin then provide the url to the website in `walletUrlForStaking`.
-        // The 'stake' button in Keplr extension will link to the webpage.
-        walletUrlForStaking: "https://x.forbole.com/staking",
-        // The BIP44 path.
         bip44: {
-            // You can only set the coin type of BIP44.
-            // 'Purpose' is fixed to 44.
-            coinType: 852,
+            coinType: coinType,
         },
-        // Bech32 configuration to show the address to user.
-        // This field is the interface of
-        // {
-        //   bech32PrefixAccAddr: string;
-        //   bech32PrefixAccPub: string;
-        //   bech32PrefixValAddr: string;
-        //   bech32PrefixValPub: string;
-        //   bech32PrefixConsAddr: string;
-        //   bech32PrefixConsPub: string;
-        // }
         bech32Config: {
-            bech32PrefixAccAddr: "desmos",
-            bech32PrefixAccPub: "desmospub",
-            bech32PrefixValAddr: "desmosvaloper",
-            bech32PrefixValPub: "desmosvaloperpub",
-            bech32PrefixConsAddr: "desmosvalcons",
-            bech32PrefixConsPub: "desmosvalconspub"
+            bech32PrefixAccAddr: accountPrefix,
+            bech32PrefixAccPub: accountPrefix + "pub",
+            bech32PrefixValAddr: accountPrefix + "valoper",
+            bech32PrefixValPub: accountPrefix + "valoperpub",
+            bech32PrefixConsAddr: accountPrefix + "valcons",
+            bech32PrefixConsPub: accountPrefix + "valconspub",
         },
-        // List of all coin/tokens used in this chain.
-        currencies: [{
-            // Coin denomination to be displayed to the user.
-            coinDenom: "DSM",
-            // Actual denom (i.e. uatom, uscrt) used by the blockchain.
-            coinMinimalDenom: "udsm",
-            // # of decimal points to convert minimal denomination to user-facing denomination.
-            coinDecimals: 6,
-            // (Optional) Keplr can show the fiat value of the coin if a coingecko id is provided.
-            // You can get id from https://api.coingecko.com/api/v3/coins/list if it is listed.
-            coinGeckoId: "desmos"
-        }],
-        // List of coin/tokens used as a fee token in this chain.
-        feeCurrencies: [{
-            // Coin denomination to be displayed to the user.
-            coinDenom: "DSM",
-            // Actual denom (i.e. uatom, uscrt) used by the blockchain.
-            coinMinimalDenom: "udsm",
-            // # of decimal points to convert minimal denomination to user-facing denomination.
-            coinDecimals: 6,
-            // (Optional) Keplr can show the fiat value of the coin if a coingecko id is provided.
-            // You can get id from https://api.coingecko.com/api/v3/coins/list if it is listed.
-            coinGeckoId: "desmos"
-        }]
+        currencies: [
+            {
+                coinDenom: coinDenom,
+                coinMinimalDenom: coinMinDenom,
+                coinDecimals: coinDecimals,
+                coinGeckoId: accountPrefix,
+            },
+        ],
+        feeCurrencies: [
+            {
+                coinDenom: coinDenom,
+                coinMinimalDenom: coinMinDenom,
+                coinDecimals: coinDecimals,
+                coinGeckoId: accountPrefix,
+            },
+        ],
+        stakeCurrency: {
+            coinDenom: coinDenom,
+            coinMinimalDenom: coinMinDenom,
+            coinDecimals: coinDecimals,
+            coinGeckoId: accountPrefix,
+        },
+        coinType: coinType,
+        gasPriceStep: {
+            low: 0.01,
+            average: 0.025,
+            high: 0.03,
+        },
     });
 
     return await connectKeplr(chainId);
